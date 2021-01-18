@@ -1,0 +1,44 @@
+.serial-no {
+  /* display: none; */
+  position: absolute;
+  background: rgba(0, 0, 0, 0.292);
+}
+
+.horizontal {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  top: -12px;
+}
+
+.vertical {
+  height: 100%;
+  left: -15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sn_block {
+  /* used to identify block of serial no
+  not period or group
+  */
+  cursor: pointer;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+}
+.sn_block:hover {
+  background: white;
+  color: black;
+}
+
+.b_group {
+  width: 56px;
+}
+
+.b_period {
+  height: 52px;
+  display: flex;
+  padding: 3px 3px;
+  align-items: center;
+}

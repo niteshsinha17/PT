@@ -1,0 +1,14 @@
+.s-block {
+  display: flex;
+  align-items: flex-end;
+}
+
+.p-block {
+  display: flex;
+  align-items: flex-end;
+}
+
+.d-block {
+  display: flex;
+  align-items: flex-end;
+}

@@ -1,0 +1,29 @@
+.element {
+  width: 56px;
+  height: 52px;
+  border-bottom: 2px solid;
+  margin: 3px;
+  cursor: pointer;
+}
+.element:hover {
+  background: white;
+  color: black;
+}
+
+.atomic-no {
+  font-size: 9px;
+  text-align: left;
+  padding: 0px 2px;
+}
+
+.name {
+  font-size: 8px;
+}
+
+.disable {
+  filter: brightness(0.3);
+}
+.symbol {
+  font-size: 14px;
+  font-weight: 500;
+}

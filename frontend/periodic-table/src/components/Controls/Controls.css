@@ -1,0 +1,53 @@
+.control-wrapper {
+  background-color: white;
+  padding: 5px;
+  min-width: 900px;
+  color: black;
+  border-radius: 2px;
+}
+
+.control-upper {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  outline: none;
+}
+.state-btn {
+  letter-spacing: 1.1px;
+  padding: 3px 8px;
+  margin: 0px 4px;
+  color: white;
+  background: slategray;
+  border: 1px solid rgb(87, 99, 111);
+  cursor: pointer;
+}
+
+.control-state {
+  display: inline;
+}
+.control-section {
+  width: 80%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.number-btn {
+  letter-spacing: 1.1px;
+  padding: 2px 5px;
+  margin: 0px 3px;
+  color: white;
+  background: slategray;
+  border: 1px solid rgb(87, 99, 111);
+  cursor: pointer;
+}
+.state-btn:hover {
+  background: rgba(69, 72, 74, 0.884);
+}
+.number-btn:hover {
+  background: rgba(69, 72, 74, 0.884);
+}
+.active-btn {
+  background: rgba(69, 72, 74, 0.884);
+}
