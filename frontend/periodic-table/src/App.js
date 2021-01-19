@@ -1,10 +1,10 @@
 import "./App.css";
-import PeriodicTable from "./components/PeriodicTable/PeriodicTable";
+import Website from "./components/Website/Website";
 
 function App() {
   return (
-    <div>
-      <PeriodicTable />
+    <div className="App">
+      <Website />
     </div>
   );
 }

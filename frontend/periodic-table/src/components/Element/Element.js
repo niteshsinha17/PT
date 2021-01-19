@@ -34,7 +34,7 @@ const Element = (props) => {
   }
 
   return (
-    <div className={classes.join(" ")}>
+    <div onClick={(event)=>controlContext.showElement(event,props.el)} className={classes.join(" ")}>
       <div className="atomic-no">{props.el.number}</div>
       <div className="symbol">{props.el.symbol}</div>
       <div className="name">{props.el.name}</div>

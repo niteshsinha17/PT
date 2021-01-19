@@ -7,7 +7,8 @@ const controlContext = React.createContext({
     selected_no:0,
     change:()=>{},
     changeState:()=>{},
-    clear:()=>{}
+    clear:()=>{},
+    hideElement:()=>{}
 })
 
 export default controlContext

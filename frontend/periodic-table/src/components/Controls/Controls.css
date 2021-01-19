@@ -1,7 +1,7 @@
 .control-wrapper {
-  background-color: white;
-  padding: 5px;
-  min-width: 900px;
+  padding: 16px;
+  margin: 7px auto;
+  width: 92%;
   color: black;
   border-radius: 2px;
 }
@@ -9,6 +9,11 @@
 .control-upper {
   display: flex;
   justify-content: space-between;
+}
+.control-lower {
+  border-top: 2px solid #00000054;
+  margin-top: 5px;
+  padding-top: 5px;
 }
 
 button {
@@ -28,8 +33,7 @@ button {
   display: inline;
 }
 .control-section {
-  width: 80%;
-  margin: 5px auto;
+  margin: 2px auto;
   display: flex;
   justify-content: space-between;
 }

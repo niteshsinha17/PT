@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import "./Controls.css";
 import Button from "../Button/Button";
 import ControlContext from "../../context/control";
+
 class Controls extends Component {
   state = {
     state_buttons: [

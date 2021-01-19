@@ -1,0 +1,28 @@
+.input-box {
+  margin: 10px 0px;
+}
+
+.input-box label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+.input-box input {
+  padding: 5px;
+  outline: none;
+}
+
+.login-form-btn {
+  border: 1px solid;
+  padding: 5px 30px;
+  background: rgb(30, 30, 98);
+  color: white;
+  cursor: pointer;
+}
+
+.register-form-btn {
+  border: 1px solid;
+  padding: 5px 30px;
+  background: #9ccc65;
+  color: white;
+  cursor: pointer;
+}

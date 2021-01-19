@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./PeriodicTable.css";
 import Controls from "../Controls/Controls";
-import SerialNo from "../SerailNo/SerialNo";
+// import SerialNo from "../SerailNo/SerialNo";
 import { s_block, p_block, d_block, f_block } from "../../Data/elements";
 import SBlock from "../SBlock/SBlock";
 import DBlock from "../DBlock/DBlock";
 import PBlock from "../PBlock/PBlock";
 import ControlContext from "../../context/control";
+import ElementDetail from "../ElementDetail/ElementDetail";
 
 class PeriodicTable extends Component {
   state = {
@@ -17,6 +18,7 @@ class PeriodicTable extends Component {
     selected: null,
     selected_no: 0,
     selected_block: null,
+    selectedElement: null,
   };
 
   changeSelected = (selected, value) => {
@@ -40,9 +42,22 @@ class PeriodicTable extends Component {
       selected_block: null,
     });
   };
+  showElement = (event, element) => {
+    event.stopPropagation();
+    this.setState({ selectedElement: element });
+  };
+
+  hideElement = () => {
+    console.log("now");
+    this.setState({ selectedElement: null });
+  };
   render() {
+    let elementDetail = "";
+    if (this.state.selectedElement) {
+      elementDetail = <ElementDetail element={this.state.selectedElement} />;
+    }
     return (
-      <div className="App">
+      <div>
         <ControlContext.Provider
           value={{
             selected: this.state.selected,
@@ -50,12 +65,14 @@ class PeriodicTable extends Component {
             changeState: this.changeState,
             change: this.changeSelected,
             clear: this.clearSelected,
+            showElement: this.showElement,
+            hideElement: this.hideElement,
           }}
         >
           <Controls />
           <div className="table-wrapper">
-            <SerialNo no={7} _for="period" direction="vertical" />
-            <SerialNo no={18} _for="group" direction="horizontal" />
+            {/* <SerialNo no={7} _for="period" direction="vertical" />
+            <SerialNo no={18} _for="group" direction="horizontal" /> */}
             <div className="table">
               <div className="block">
                 <SBlock start={0} elements={this.state.s_block} />
@@ -68,6 +85,7 @@ class PeriodicTable extends Component {
               </div>
             </div>
           </div>
+          {elementDetail}
         </ControlContext.Provider>
       </div>
     );

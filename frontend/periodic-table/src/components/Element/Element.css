@@ -1,13 +1,14 @@
 .element {
-  width: 56px;
-  height: 52px;
+  width: 55px;
+  padding-bottom: 4px;
+  height: 40px;
   border-bottom: 2px solid;
   margin: 3px;
   cursor: pointer;
 }
 .element:hover {
-  background: white;
-  color: black;
+  background: black;
+  color: white;
 }
 
 .atomic-no {
@@ -21,7 +22,7 @@
 }
 
 .disable {
-  filter: brightness(0.3);
+  filter: opacity(0.3);
 }
 .symbol {
   font-size: 14px;
