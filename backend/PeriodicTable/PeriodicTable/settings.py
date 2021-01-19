@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'Element.apps.ElementConfig',
     'Course.apps.CourseConfig',
+    'account.apps.AccountConfig',
     'django_extensions',
 ]
 
