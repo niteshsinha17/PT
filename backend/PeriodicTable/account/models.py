@@ -8,6 +8,7 @@ class Profile(models.Model):
 	"""docstring for Profile"""
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	chapter_completed = models.IntegerField(default=0, blank=True)
+	topic_completed = models.IntegerField(default=0, blank=True)
 	def __str__(self):
 		return self.user.username
 

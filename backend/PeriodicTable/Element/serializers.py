@@ -7,3 +7,8 @@ class ElementSerializer(serializers.ModelSerializer):
 		model = Element
 		fields = '__all__'
 		
+class ElementInfo(serializers.ModelSerializer):
+	"""docstring for ElementInfo"""
+	class Meta:
+		model = Element
+		fields = ('AtomicNumber','Element','Symbol')
