@@ -7,10 +7,16 @@ import Input from "../UI/Input/Input";
 import Model from "../UI/Model/Model";
 import "./Header.css";
 
+import LoginForm from "../Forms/LoginForm/LoginForm";
+
 class Header extends Component {
   state = {
     showLoginForm: false,
     showRegisterForm: false,
+  };
+
+  formCloseHandler = () => {
+    this.setState({ showLoginForm: false, showRegisterForm: false });
   };
 
   showLoginForm = () => {
@@ -39,25 +45,16 @@ class Header extends Component {
             Login
           </HeaderButton>
         </div>
-        <Model modelType="form-model" show={this.state.showLoginForm}>
-          <form>
-            <h2>Login Form</h2>
-            <Input
-              inputtype="input"
-              label="Username"
-              type="text"
-              placeholder="Username"
-            />
-            <Input
-              inputtype="input"
-              label="Password"
-              type="password"
-              placeholder="Your Passwprd"
-            />
-            <input type="submit" className="login-form-btn" value="Login" />
-          </form>
-        </Model>
-        <Model modelType="form-model" show={this.state.showRegisterForm}>
+        <LoginForm
+          close={this.formCloseHandler}
+          show={this.state.showLoginForm}
+        />
+
+        <Model
+          close={this.formCloseHandler}
+          modelType="form-model"
+          show={this.state.showRegisterForm}
+        >
           <form>
             <h2>Register Form</h2>
             <Input

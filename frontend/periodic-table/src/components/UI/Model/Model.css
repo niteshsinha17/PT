@@ -8,6 +8,34 @@
   display: none;
 }
 
+.cross {
+  position: absolute;
+  right: 36px;
+  top: 21px;
+  cursor: pointer;
+}
+
+.cross::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 25px;
+  transform: rotate(45deg);
+  background-color: black;
+  height: 4px;
+  border-radius: 2px;
+}
+.cross::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 25px;
+  transform: rotate(-45deg);
+  background-color: black;
+  height: 4px;
+  border-radius: 2px;
+}
+
 .form-model {
   width: 70%;
   background: white;

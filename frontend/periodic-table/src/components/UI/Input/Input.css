@@ -1,21 +1,26 @@
 .input-box {
-  margin: 10px 0px;
+  margin: 20px 0px;
 }
 
-.input-box label {
-  margin-right: 10px;
-  font-size: 18px;
+.form-model form {
+  width: 200px;
+  margin: auto;
 }
+
 .input-box input {
-  padding: 5px;
+  padding: 5px 0px;
+  width: 100%;
   outline: none;
 }
 
 .login-form-btn {
-  border: 1px solid;
-  padding: 5px 30px;
+  border: 0px;
+  margin-top: 20px;
+  padding: 7px;
   background: rgb(30, 30, 98);
   color: white;
+  display: block;
+  width: 102%;
   cursor: pointer;
 }
 
@@ -25,4 +30,8 @@
   background: #9ccc65;
   color: white;
   cursor: pointer;
+}
+
+.invalid {
+  border: 1px solid red;
 }
