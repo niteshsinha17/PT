@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import Model from "../../UI/Model/Model";
 import Input from "../../UI/Input/Input";
+import * as actions from "../../../store/actions/index";
 
 class LoginForm extends Component {
   state = {
     controls: {
-      Username: {
+      username: {
         elementType: "input",
         elementConfig: {
           type: "text",
@@ -27,7 +30,7 @@ class LoginForm extends Component {
         value: "",
         validation: {
           required: true,
-          minLength: 6,
+          minLength: 4,
         },
         valid: false,
         touched: false,
@@ -81,10 +84,10 @@ class LoginForm extends Component {
     };
     this.setState({ controls: updatedControls });
   };
-  // submitHandler = (event) => {
-  //     event.preventDefault();
-  //     this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
-  // }
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.props.onAuth(this.state.controls.username.value, this.state.controls.password.value);
+}
 
   render() {
     const loginFormElements = [];
@@ -113,7 +116,7 @@ class LoginForm extends Component {
         modelType="form-model"
         show={this.props.show}
       >
-        <form>
+        <form onSubmit={this.submitHandler}>
           <h2>Login Form</h2>
           {loginForm}
           <input type="submit" className="login-form-btn" value="Login" />
@@ -123,4 +126,9 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = dispatch=>{
+  return{
+    onAuth:(username,password)=>dispatch(actions.auth(username,password))
+  }
+}
+export default connect(null,mapDispatchToProps)(LoginForm);

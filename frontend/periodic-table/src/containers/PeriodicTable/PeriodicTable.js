@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./PeriodicTable.css";
-import Controls from "../Controls/Controls";
+import Controls from "../../components/Controls/Controls";
 // import SerialNo from "../SerailNo/SerialNo";
 import { s_block, p_block, d_block, f_block } from "../../Data/elements";
-import SBlock from "../SBlock/SBlock";
-import DBlock from "../DBlock/DBlock";
-import PBlock from "../PBlock/PBlock";
+import SBlock from "../../components/SBlock/SBlock";
+import DBlock from "../../components/DBlock/DBlock";
+import PBlock from "../../components/PBlock/PBlock";
 import ControlContext from "../../context/control";
-import ElementDetail from "../ElementDetail/ElementDetail";
+import ElementDetail from "../../components/ElementDetail/ElementDetail";
 
 class PeriodicTable extends Component {
   state = {

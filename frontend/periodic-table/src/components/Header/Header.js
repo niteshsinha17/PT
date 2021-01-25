@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import logo from "../../Eu.png";
 import NavItem from "./NavItem";
 import HeaderButton from "./HeaderButton";
-// import Forms from "../Forms/Forms";
 import Input from "../UI/Input/Input";
 import Model from "../UI/Model/Model";
 import "./Header.css";
@@ -30,12 +29,11 @@ class Header extends Component {
       <div className="navbar">
         <ul className="nav">
           <li className="nav-item">
-            <a className="navbar-brand">
-              <img src={logo} alt="" />
-            </a>
+          <span className="navbar-brand"><img src={logo} alt="" /></span>          
           </li>
-          <NavItem class="link-active">Overview</NavItem>
-          <NavItem class="">Course</NavItem>
+          <NavItem to='/' exact={true} >Overview</NavItem>
+          <NavItem to='/course' exact={true} >Course</NavItem>
+          <NavItem to='/study-material' exact={false} >Study Material</NavItem>
         </ul>
         <div className="account-info">
           <HeaderButton click={this.showRegisterForm} _for="register-btn">
