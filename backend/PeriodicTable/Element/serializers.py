@@ -6,7 +6,7 @@ class Element_Detail_Serializer(serializers.ModelSerializer):
 		model = Element
 		fields = '__all__'
 
-class ElementSerializer(object):
+class ElementSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Element
-		fields = ('AtomicNumber','Symbol','Element')
+		fields = ('id', 'AtomicNumber','Symbol','Element')

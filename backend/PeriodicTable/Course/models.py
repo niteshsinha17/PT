@@ -10,4 +10,10 @@ class Chapter(models.Model):
 class Topic(models.Model):
 	Topic_title = models.CharField(default='', blank=True, max_length=200)
 	chapter = models.ForeignKey(Chapter,null=True, blank=True, on_delete=models.SET_NULL)
+	theory = models.CharField(default='', blank=True, max_length=1000)
 	read_time = models.IntegerField(default=0, blank=True) # Reading time of topic in minutes
+
+
+class Image(models.Model):
+	img = models.ImageField(upload_to = "images/")
+	topic = models.ForeignKey(Topic, null=True, blank=True, on_delete=models.SET_NULL)
