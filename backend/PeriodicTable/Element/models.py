@@ -1,99 +1,114 @@
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
+import datetime
 # Create your models here.
 
+
+def year_choices():
+    return [(r, r) for r in range(1920, datetime.date.today().year+1)]
+
+
 class Group(models.Model):
-	"""docstring for ClassName"""
+    name = models.IntegerField(
+        null=True, blank=True, unique=True)
 
-	Group_name = models.IntegerField(default=0, blank=True)
-	class Meta:
-		verbose_name_plural = "Group"
+    class Meta:
+        verbose_name = "Group"
 
-	def __str__(self):
-		return str(self.Group_name)
+    def __str__(self):
+        return 'Group {}'.format(str(self.name))
 
 
 class Period(models.Model):
-	"""docstring for Period"""
+    name = models.IntegerField(
+        null=True, blank=True, unique=True)
 
-	Period_name = models.IntegerField(default=0, blank=True)
-	class Meta:
-		verbose_name_plural = "Period"
+    class Meta:
+        verbose_name = "Period"
 
-	def __str__(self):
-		return str(self.Period_name)
+    def __str__(self):
+        return 'Period {}'.format(str(self.name))
+
 
 class Block(models.Model):
-	"""docstring for Block"""
-	BLOCK_CATEGORIES = (
-    ('s', 's'),
-    ('p', 'p'),
-    ('d', 'd'),
-    ('f', 'f')
+    BLOCK_CATEGORIES = (
+        ('s', 's'),
+        ('p', 'p'),
+        ('d', 'd'),
+        ('f', 'f')
     )
 
-	Block_name = models.CharField(max_length=30, blank=True, choices=BLOCK_CATEGORIES)
+    name = models.CharField(
+        max_length=30, null=True, blank=True, unique=True, choices=BLOCK_CATEGORIES)
 
-	class Meta:
-		verbose_name_plural = "Block"
+    class Meta:
+        verbose_name = "Block"
 
-	def __str__(self):
-		return self.Block_name
+    def __str__(self):
+        return '{} Block'.format(self.name)
+
 
 class Element(models.Model):
-	"""docstring for Element"""
-
-	PHASE_CATEGORIES = (
-    ('solid', 'solid'),
-    ('gas', 'gas'),
-    ('liq', 'liq'),
-    ('artificial', 'artificial')
+    PHASE_CATEGORIES = (
+        ('Solid', 'Solid'),
+        ('Gas', 'Gas'),
+        ('Liquid', 'Liquid'),
+        ('Artificial', 'Artificial')
     )
 
-	TYPE_CATEGORIES = (
-    ('Transition_Metal', 'Transition_Metal'),
-    ('Actinide', 'Actinide'),
-    ('Lanthanide', 'Lanthanide'),
-    ('Transactinide', 'Transactinide'),
-    ('Nonmetal', 'Nonmetal'),
-    ('Metal', 'Metal'),
-    ('Metalloid', 'Metalloid'),
-    ('Noble_Gas', 'Noble_Gas'),
-    ('Alkali_Metal', 'Alkali_Metal'),
-    ('Alkaline_Earth_Metal', 'Alkaline_Earth_Metal'),
-    ('Halogen', 'Halogen'),
-    ('Not_defined','Not_defined')
+    TYPE_CATEGORIES = (
+        ('Transition Metal', 'Transition Metal'),
+        ('Actinide', 'Actinide'),
+        ('Lanthanide', 'Lanthanide'),
+        ('Transactinide', 'Transactinide'),
+        ('Nonmetal', 'Nonmetal'),
+        ('Metal', 'Metal'),
+        ('Metalloid', 'Metalloid'),
+        ('Noble Gas', 'Noble Gas'),
+        ('Alkali Metal', 'Alkali Metal'),
+        ('Alkaline Earth Metal', 'Alkaline Earth Metal'),
+        ('Halogen', 'Halogen'),
+        ('Not Defined', 'Not Defined')
     )
 
-	AtomicNumber = models.IntegerField(default=1, blank=True)	
-	Element	= models.CharField(default='', blank=True, max_length=200)
-	Symbol	= models.CharField(default='', blank=True, max_length=20)
-	Block	= models.ForeignKey(Block,null=True, blank=True, on_delete=models.SET_NULL)
-	AtomicMass = models.FloatField(default=0.0, blank=True)
-	NumberofNeutrons = models.IntegerField(default=0, blank=True)
-	NumberofProtons	= models.IntegerField(default=0, blank=True)
-	NumberofElectrons = models.IntegerField(default=0, blank=True)
-	Period = models.ForeignKey(Period,null=True, blank=True, on_delete=models.SET_NULL)
-	Group = models.ForeignKey(Group,null=True, blank=True, on_delete=models.SET_NULL)
-	Phase = models.CharField(max_length=30, choices=PHASE_CATEGORIES)
-	Radioactive	= models.BooleanField(default=False, blank=True)
-	Natural	= models.BooleanField(default=False, blank=True)
-	Metal = models.BooleanField(default=False, blank=True)
-	Nonmetal = models.BooleanField(default=False, blank=True)
-	Metalloid = models.BooleanField(default=False, blank=True)
-	Type = models.CharField(max_length=30, choices=TYPE_CATEGORIES)
-	AtomicRadius = models.FloatField(default=0.0, blank=True)
-	Electronegativity = models.FloatField(default=0.0, blank=True)
-	FirstIonization	= models.FloatField(default=0.0, blank=True)
-	Density	= models.FloatField(default=0.0, blank=True)
-	MeltingPoint = models.FloatField(default=0.0, blank=True)	
-	BoilingPoint = models.FloatField(default=0.0, blank=True)
-	NumberOfIsotopes = models.IntegerField(default=0, blank=True)
-	Discoverer = models.CharField(default='', blank=True, max_length=200)
-	Year = models.IntegerField(default=0, blank=True)
-	SpecificHeat = models.FloatField(default=0.0, blank=True)
-	NumberofShells = models.IntegerField(default=0, blank=True)
-	NumberofValence = models.IntegerField(default=0, blank=True)
+    atomic_number = models.IntegerField(null=True, blank=True, unique=True)
+    name = models.CharField(max_length=200)
+    symbol = models.CharField(null=True, blank=True, max_length=20)
+    block = models.ForeignKey(
+        Block, null=True, blank=True, on_delete=models.CASCADE, related_name='elements')
+    atomic_mass = models.FloatField(null=True, blank=True)
+    nn = models.IntegerField(_("No of Neutrons"), null=True, blank=True)
+    np = models.IntegerField(_("No of Protons"), null=True, blank=True)
+    ne = models.IntegerField(_("No of Electrons"), null=True, blank=True)
+    period = models.ForeignKey(
+        Period, null=True, blank=True, on_delete=models.CASCADE)
+    group = models.ForeignKey(
+        Group, null=True, blank=True, on_delete=models.CASCADE)
+    phase = models.CharField(max_length=30, choices=PHASE_CATEGORIES)
+    radioactive = models.BooleanField(default=False)
+    natural = models.BooleanField(default=False)
+    metal = models.BooleanField(default=False)
+    non_metal = models.BooleanField(default=False)
+    metalloid = models.BooleanField(default=False)
+    type = models.CharField(max_length=30, choices=TYPE_CATEGORIES)
+    atomic_radius = models.FloatField(null=True, blank=True)
+    electronegativity = models.FloatField(null=True, blank=True)
+    first_ionization = models.FloatField(null=True, blank=True)
+    density = models.FloatField(null=True, blank=True)
+    melting_point = models.FloatField(null=True, blank=True)
+    boiling_point = models.FloatField(null=True, blank=True)
+    ns = models.IntegerField(_('Number of Isotopes'), default=0, blank=True)
+    discovered_by = models.CharField(default='', blank=True, max_length=200)
+    year = models.IntegerField(
+        _('Year of Discovery'), choices=year_choices(), null=True, blank=True)
+    specific_heat = models.FloatField(null=True, blank=True)
+    shells = models.IntegerField(_('Number of Shells'), null=True, blank=True)
+    valence = models.IntegerField(null=True, blank=True)
 
-	def __str__(self):
-		return self.Element
+    class Meta:
+        ordering = ['atomic_number']
+        verbose_name = 'Periodic Table Elements'
+        verbose_name_plural = 'Periodic Table Elements'
+
+    def __str__(self):
+        return self.name
