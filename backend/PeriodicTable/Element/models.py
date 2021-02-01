@@ -103,7 +103,7 @@ class Element(models.Model):
     ns = models.IntegerField(_('Number of Isotopes'), default=0, blank=True)
     discovered_by = models.CharField(default='', blank=True, max_length=200)
     year = models.IntegerField(
-        _('Year of Discovery'), choices=year_choices(), null=True, blank=True)
+        _('Year of Discovery'), null=True, blank=True)
     specific_heat = models.FloatField(null=True, blank=True)
     shells = models.IntegerField(_('Number of Shells'), null=True, blank=True)
     valence = models.IntegerField(null=True, blank=True)

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Element.apps.ElementConfig',
     'Course.apps.CourseConfig',
+    'game.apps.GameConfig',
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
@@ -146,5 +147,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
