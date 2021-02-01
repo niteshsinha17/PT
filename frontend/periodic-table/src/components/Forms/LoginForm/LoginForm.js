@@ -86,8 +86,11 @@ class LoginForm extends Component {
   };
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(this.state.controls.username.value, this.state.controls.password.value);
-}
+    this.props.onAuth(
+      this.state.controls.username.value,
+      this.state.controls.password.value
+    );
+  };
 
   render() {
     const loginFormElements = [];
@@ -126,9 +129,9 @@ class LoginForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch=>{
-  return{
-    onAuth:(username,password)=>dispatch(actions.auth(username,password))
-  }
-}
-export default connect(null,mapDispatchToProps)(LoginForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (username, password) => dispatch(actions.auth(username, password)),
+  };
+};
+export default connect(null, mapDispatchToProps)(LoginForm);

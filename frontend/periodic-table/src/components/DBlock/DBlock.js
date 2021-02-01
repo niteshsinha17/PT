@@ -5,12 +5,12 @@ const dBlock = (props) => {
   // console.log(props.elements);
   const get_groups = (elements) => {
     let i = props.start;
-    let groups = elements.groups.map((group) => {
+    let groups = elements.map((group) => {
       i += 1;
       return (
-        <div key={"g-" + i} className="group">
-          {group.map((element) => {
-            return <Element group={i} block="d" key={element.number} el={element} />;
+        <div key={"dg-" + i} className="group">
+          {group.elements.map((element) => {
+            return <Element group={element.group} block="d" key={element.id} el={element} />;
           })}
         </div>
       );

@@ -9,3 +9,13 @@
   align-items: flex-end;
   display: flex;
 }
+
+.f-block {
+  margin-top: 50px;
+}
+
+.f-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

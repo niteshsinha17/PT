@@ -8,17 +8,6 @@ def year_choices():
     return [(r, r) for r in range(1920, datetime.date.today().year+1)]
 
 
-class Group(models.Model):
-    name = models.IntegerField(
-        null=True, blank=True, unique=True)
-
-    class Meta:
-        verbose_name = "Group"
-
-    def __str__(self):
-        return 'Group {}'.format(str(self.name))
-
-
 class Period(models.Model):
     name = models.IntegerField(
         null=True, blank=True, unique=True)
@@ -48,6 +37,20 @@ class Block(models.Model):
         return '{} Block'.format(self.name)
 
 
+class Group(models.Model):
+    name = models.IntegerField(
+        null=True, blank=True, unique=True)
+
+    block = models.ForeignKey(
+        Block, on_delete=models.CASCADE, blank=True, null=True, related_name='groups')
+
+    class Meta:
+        verbose_name = "Group"
+
+    def __str__(self):
+        return 'Group {}'.format(str(self.name))
+
+
 class Element(models.Model):
     PHASE_CATEGORIES = (
         ('Solid', 'Solid'),
@@ -71,7 +74,7 @@ class Element(models.Model):
         ('Not Defined', 'Not Defined')
     )
 
-    atomic_number = models.IntegerField(null=True, blank=True, unique=True)
+    atomic_number = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=200)
     symbol = models.CharField(null=True, blank=True, max_length=20)
     block = models.ForeignKey(
@@ -83,7 +86,7 @@ class Element(models.Model):
     period = models.ForeignKey(
         Period, null=True, blank=True, on_delete=models.CASCADE)
     group = models.ForeignKey(
-        Group, null=True, blank=True, on_delete=models.CASCADE)
+        Group, null=True, blank=True, on_delete=models.CASCADE, related_name='elements')
     phase = models.CharField(max_length=30, choices=PHASE_CATEGORIES)
     radioactive = models.BooleanField(default=False)
     natural = models.BooleanField(default=False)
@@ -107,6 +110,7 @@ class Element(models.Model):
 
     class Meta:
         ordering = ['atomic_number']
+        unique_together = ['atomic_number', 'group']
         verbose_name = 'Periodic Table Elements'
         verbose_name_plural = 'Periodic Table Elements'
 

@@ -1,7 +1,7 @@
 import csv
 import json
 
-with open("updated_periodic_table.csv", "r") as data_file:
+with open("periodic_table.csv", "r") as data_file:
     reader = csv.DictReader(data_file)
     s_block = []
     d_block = []

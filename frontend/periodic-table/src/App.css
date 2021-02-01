@@ -13,3 +13,10 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+.lock {
+  position: absolute;
+  height: 20px;
+  right: 2px;
+  top: 5px;
+}

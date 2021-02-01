@@ -5,7 +5,11 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
+  is_authenticated: false,
+  showLoginForm: false,
+  showRegisterForm: false,
 };
+
 const updateObject = (state, updatedProperties) => {
   return {
     ...state,
@@ -14,11 +18,14 @@ const updateObject = (state, updatedProperties) => {
 };
 
 const authSuccess = (state, action) => {
+  localStorage.setItem("euToken", action.token);
+  localStorage.setItem("euUserId", action.userId);
   return updateObject(state, {
     token: action.token,
     userId: action.userId,
     error: null,
     loading: false,
+    is_authenticated: true,
   });
 };
 
@@ -39,6 +46,16 @@ const reducer = (state = initialState, action) => {
       return authSuccess(state, action);
     case actionTypes.AUTH_FAIL:
       return authFail(state, action);
+    case actionTypes.CHANGE_LOGIN_FORM_VIEW:
+      return updateObject(state, {
+        showRegisterForm: false,
+        showLoginForm: !state.showLoginForm,
+      });
+    case actionTypes.CHANGE_REGISTER_FORM_VIEW:
+      return updateObject(state, {
+        showRegisterForm: !state.showRegisterForm,
+        showLoginForm: false,
+      });
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from Element.models import Element, Block
+from Element.models import Element, Block, Group
 
 
 class ElementSerializer(ModelSerializer):
@@ -10,12 +10,20 @@ class ElementSerializer(ModelSerializer):
                   ]
 
 
-class BlockSerializer(ModelSerializer):
+class GroupSerializer(ModelSerializer):
     elements = ElementSerializer(many=True, read_only=True)
 
     class Meta:
+        model = Group
+        fields = ['elements']
+
+
+class BlockSerializer(ModelSerializer):
+    groups = GroupSerializer(many=True, read_only=True)
+
+    class Meta:
         model = Block
-        fields = ['name', 'elements']
+        fields = ['name', 'groups']
 
 
 class ElementDetailSerializer(ModelSerializer):

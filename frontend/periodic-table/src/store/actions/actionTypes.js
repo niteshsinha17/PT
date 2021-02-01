@@ -1,3 +1,12 @@
-export const AUTH_START = 'AUTH_START';
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_START = "AUTH_START";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const AUTH_CHECK = "AUTH_CHECK";
+export const AUTH_CHECK_SUCCESS = "AUTH_CHECK_SUCCESS";
+
+export const TABLE_LOAD = "TABLE_LOAD";
+export const TABLE_LOAD_SUCCESS = "TABLE_LOAD_SUCCESS";
+export const TABLE_LOAD_FAILED = "TABLE_LOAD_FAILED";
+
+export const CHANGE_LOGIN_FORM_VIEW = "CHANGE_LOGIN_FORM_VIEW";
+export const CHANGE_REGISTER_FORM_VIEW = "CHANGE_REGISTER_FORM_VIEW";

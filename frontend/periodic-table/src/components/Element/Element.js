@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
+import { connect } from "react-redux";
+
 import "./Element.css";
 import ControlContext from "../../context/control";
+import Lock from "../UI/Lock/Lock";
+import * as actions from ".././../store/actions/index";
 
 const Element = (props) => {
   const controlContext = useContext(ControlContext);
@@ -34,12 +38,25 @@ const Element = (props) => {
   }
 
   return (
-    <div onClick={(event)=>controlContext.showElement(event,props.el)} className={classes.join(" ")}>
-      <div className="atomic-no">{props.el.number}</div>
+    <div
+      onClick={(event) => controlContext.showElement(event, props.el.id)}
+      className={classes.join(" ")}
+    >
+      {props.el.atomic_number > 21 && props.authenticated === false ? (
+        <Lock />
+      ) : null}
+
+      <div className="atomic-no">{props.el.atomic_number}</div>
       <div className="symbol">{props.el.symbol}</div>
       <div className="name">{props.el.name}</div>
     </div>
   );
 };
 
-export default Element;
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.auth.is_authenticated,
+  };
+};
+
+export default connect(mapStateToProps, null)(Element);

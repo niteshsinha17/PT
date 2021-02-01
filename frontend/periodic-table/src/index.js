@@ -7,12 +7,15 @@ import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import authReducer from "./store/reducers/authReducer";
-// import reducer from "./store/reducer";
+import tableReducer from "./store/reducers/tableReducer";
+import studyMaterialReducer from "./store/reducers/studyMaterialReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  table: tableReducer,
+  material: studyMaterialReducer,
 });
 
 const store = createStore(

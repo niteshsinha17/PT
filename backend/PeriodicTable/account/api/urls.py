@@ -5,4 +5,5 @@ from account.api import views
 
 urlpatterns = [
     path('login/', views.ApiLoginView.as_view()),
+    path('login/<int:pk>', views.get_account)
 ]

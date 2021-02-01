@@ -4,7 +4,11 @@
   height: 40px;
   border-bottom: 2px solid;
   margin: 3px;
+  position: relative;
   cursor: pointer;
+}
+.element .lock {
+  height: 12px;
 }
 .element:hover {
   background: black;
