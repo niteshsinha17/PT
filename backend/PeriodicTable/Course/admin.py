@@ -1,21 +1,43 @@
 from django.contrib import admin
-from .models import Chapter, Topic, ElementType, Div1, Div2, Div3
+from django.contrib.contenttypes.admin import GenericStackedInline
+
+from .models import Chapter, Topic, TopicElement, Element
 # Register your models here.
 
 
-class Div1Inline(admin.TabularInline):
-    model = ElementType
+class TopicElementAdmin(admin.StackedInline):
+    model = TopicElement
+    extra = 0
+    # fields = ['__all__']
 
 
-class ElementTypeAdmin(admin.ModelAdmin):
-    inlines = [
-        Div1Inline,
-    ]
+class TopicAdminInline(admin.StackedInline):
+    model = Topic
+    extra = 0
 
 
-admin.site.register(Chapter)
-admin.site.register(Topic)
-admin.site.register(ElementType)
-admin.site.register(Div1)
-admin.site.register(Div2)
-admin.site.register(Div3)
+class ElementInline(GenericStackedInline):
+    model = Element
+    extra = 0
+
+
+class ElementTopicAdmin(admin.ModelAdmin):
+    inlines = [ElementInline]
+
+
+class TopicAdmin(admin.ModelAdmin):
+    inlines = [TopicElementAdmin]
+
+
+class ChapterAdmin(admin.ModelAdmin):
+    inlines = [TopicAdminInline]
+
+
+admin.site.register(Chapter, ChapterAdmin)
+admin.site.register(Topic, TopicAdmin)
+admin.site.register(TopicElement, ElementTopicAdmin)
+admin.site.register(Element)
+# admin.site.register(Div2)
+# admin.site.register(Div3)
+
+# TopicAdmin.inlines += [TopicElementAdmin]

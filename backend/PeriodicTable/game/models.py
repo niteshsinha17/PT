@@ -12,4 +12,3 @@ class Question(models.Model):
     quiz = models.ForeignKey(
         QuizTopic, null=True, blank=True, on_delete=models.CASCADE)
     question = models.CharField(max_length=500)
-    option1 = models.CharField(max)
