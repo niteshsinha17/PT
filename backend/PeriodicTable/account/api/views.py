@@ -34,6 +34,8 @@ class ObtainAccount(viewsets.ViewSet):
         pass
 
     def create(self, request):
+        # if request.method == 'POST':
+        #     token = Token.objects.create(user)
         pass
 
     def retrieve(self, request, pk=None):
