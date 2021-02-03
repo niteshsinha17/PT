@@ -34,7 +34,16 @@ class ObtainAccount(viewsets.ViewSet):
         pass
 
     def create(self, request):
-        pass
+        serializer = AccountSerializer(data=request.data,
+                                       context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'username': user.username,
+            'id': user.id
+        })
 
     def retrieve(self, request, pk=None):
         qeuryset = User.objects.all()
@@ -53,3 +62,4 @@ class ObtainAccount(viewsets.ViewSet):
 
 
 get_account = ObtainAccount.as_view({'get': 'retrieve'})
+create_account = ObtainAccount.as_view({'get': 'create'})
