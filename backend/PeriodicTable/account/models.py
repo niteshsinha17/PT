@@ -1,17 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from Course.models import Chapter
 # Create your models here.
 
 
 class Profile(models.Model):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, blank=True, null=True)
     chapter_completed = models.IntegerField(default=0, blank=True)
     topic_completed = models.IntegerField(default=0, blank=True)
+    total_chapter = models.IntegerField(default=0, blank=True)
+    profile_image = models.ImageField(upload_to='profile_images', blank=True)
 
-    # def __str__(self):
-    #     return self.user.username
+    def __str__(self):
+        return self.user.username
 
+
+class ChapterScore(models.Model):
+    profile_user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
+    attempted = models.IntegerField(default=0)
+    maximum_max = models.IntegerField(default=0)
+    scored_max = models.IntegerField(default=0)
 
 # @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 # def create_auth_token(sender, instance=None, created=False ** kwargs):
