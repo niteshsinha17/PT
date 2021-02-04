@@ -1,0 +1,76 @@
+.structure {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column: 1fr 1fr 1fr;
+}
+
+.topic-list {
+  background: rgb(0 0 0 / 34%);
+  list-style: none;
+  width: 100%;
+  right: -138px;
+  margin: 10px 0px;
+}
+
+.chapters {
+  padding: 20px;
+}
+.topic-list li {
+  margin: 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  letter-spacing: 1.1px;
+}
+.chapter {
+  color: white;
+  height: 322px;
+  width: 259px;
+  margin: 14px auto;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 0px 0px 14px #0000004f;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.chapter-name {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.chapter-name img {
+  height: 20px;
+}
+
+.chapter-topic {
+  position: relative;
+}
+
+.chapter-topic img {
+  height: 20px;
+  margin-bottom: -4px;
+  margin-left: 4px;
+  filter: invert(1);
+  cursor: pointer;
+  transform-origin: 50% 60%;
+}
+
+.rotate-arrow {
+  transform: rotate(90deg);
+}
+.show-topics {
+  display: block;
+}
+
+.topic-btn {
+  cursor: pointer;
+  border: 2px solid;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+}

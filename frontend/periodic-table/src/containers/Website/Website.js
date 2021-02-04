@@ -7,6 +7,7 @@ import Course from "../Course/Course";
 import StudyMaterial from "../StudyMaterial/StudyMaterial";
 import { Route, Redirect } from "react-router-dom";
 import * as actions from "../../store/actions/index";
+import Board from "../../components/Board/Board";
 
 class Website extends React.Component {
   componentDidMount() {
@@ -16,7 +17,6 @@ class Website extends React.Component {
     return (
       <div>
         <Header></Header> {/*//Do you know why to use of switch? */}
-        <Route path="/" exact component={Overview} />
         <Route
           path="/course"
           exact
@@ -28,6 +28,10 @@ class Website extends React.Component {
             return <Redirect to="/" />;
           }}
         />
+        <Route path="/" exact component={Overview} />
+
+        <Route path="/course/:chapter/:topic/" component={Board} />
+        
         <Route
           path="/study-material"
           exact
@@ -38,6 +42,7 @@ class Website extends React.Component {
             return <Redirect to="/" />;
           }}
         />
+
       </div>
     );
   }
