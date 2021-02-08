@@ -15,6 +15,18 @@ class Command(BaseCommand):
     other_groups = []  # For Lan. and Act
     block_map = {}
     periods = []
+    colors = {
+        'Alkali Metal': '#ff6666',
+        'Alkaline Earth Metal': '#fedead',
+        'Transition Metal': '#ffc0bf',
+        'Actinide': '#ff99cb',
+        'Lanthanide': '#ffbffe',
+        'Post Transition Metal': '#cccccc',
+        'Other Non Metal': '#e8e8e8',
+        'Metalloid': '#cccc9a',
+        'Noble Gas': '#c1feff',
+        'Halogen': '#f1ff90',
+    }
 
     def handle(self, *args, **kwargs):
         self.create_sections('block')
@@ -46,8 +58,8 @@ class Command(BaseCommand):
                                                   np=e['np'], ne=e['ne'], nn=e['nn'], atomic_radius=e[
                 'atomic_radius'], melting_point=e['melting_point'],
                 boiling_point=e['boiling_point'], discovered_by=e['discoverer'].capitalize(), shells=e[
-                'shells'], electronegativity=e['electronegativity'], valence=e['valence'], type=e['type'].capitalize(),
-                natural=self.get_bool(e['natural']), metal=self.get_bool(e['metal']), non_metal=self.get_bool(e['non_metal']), metalloid=self.get_bool(e['metalloid']), group=group, radioactive=self.get_bool(e['radioactive']),
+                'shells'], electronegativity=e['electronegativity'], valence=e['valence'], _type=e['type'],
+                natural=self.get_bool(e['natural']), color=self.colors[e['type']], metal=self.get_bool(e['metal']), non_metal=self.get_bool(e['non_metal']), metalloid=self.get_bool(e['metalloid']), group=group, radioactive=self.get_bool(e['radioactive']),
                 period=self.periods[
                 int(e['period'])-1], first_ionization=e['first_ionization'], specific_heat=e['specific_heat'], density=e['density'],
                 phase=e['phase'].capitalize()
