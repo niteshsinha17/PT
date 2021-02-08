@@ -6,7 +6,7 @@ class ElementSerializer(ModelSerializer):
     class Meta:
         model = Element
         fields = ['id', 'name', 'atomic_number', 'symbol', 'period',
-                  'group', 'metal', 'non_metal', 'metalloid', 'type',
+                  'group', 'metal', 'non_metal', 'metalloid', '_type', 'color',
                   ]
 
 
