@@ -42,7 +42,7 @@ class ChapterViewSet(viewsets.ViewSet):
         serializer = TopicSerializer(queryset, many=True)
 
         try:
-             auth = request.META.get('HTTP_AUTHORIZATION')
+            auth = request.META.get('HTTP_AUTHORIZATION')
             _, token = auth.split()
             user = Token.objects.get(key=token).user
             profile = Profile.objects.get(user=user)
