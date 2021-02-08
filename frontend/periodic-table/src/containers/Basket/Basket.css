@@ -1,0 +1,38 @@
+.basket img {
+  height: 200px;
+}
+
+.baskets {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+}
+
+.basket-game {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+}
+
+.basket-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.basket-element {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  border: 8px solid #ff5c5c;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px auto;
+  justify-content: space-evenly;
+  padding: 20px 30px;
+}
+
+.basket-element-symbol {
+  font-size: 41px;
+}

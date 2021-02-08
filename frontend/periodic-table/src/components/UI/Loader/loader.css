@@ -1,3 +1,8 @@
+.loader {
+  position: fixed;
+  height: 100vh;
+}
+
 .wrap {
   position: absolute;
   top: 50%;

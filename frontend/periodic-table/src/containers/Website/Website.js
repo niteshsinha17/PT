@@ -8,8 +8,12 @@ import StudyMaterial from "../StudyMaterial/StudyMaterial";
 import { Route, Redirect } from "react-router-dom";
 import * as actions from "../../store/actions/index";
 import Board from "../../components/Board/Board";
+import Loader from "../../components/UI/Loader/Loader";
 
 class Website extends React.Component {
+  state = {
+    loading:true
+  }
   componentDidMount() {
     this.props.login();
   }

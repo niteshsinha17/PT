@@ -1,11 +1,8 @@
 import React from "react";
+import * as comp from "../../utils/utils";
 
-const introduction = (props) => {
-  return (
-    <div>
-      <h1>introduction</h1>
-    </div>
-  );
+const introduction = () => {
+  return <div>Write some intro for the topic</div>;
 };
 
-export default introduction
+export default introduction;

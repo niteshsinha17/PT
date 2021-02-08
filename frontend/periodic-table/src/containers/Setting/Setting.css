@@ -1,0 +1,57 @@
+.user-img img {
+  border-radius: 50%;
+  height: 70px;
+  box-sizing: border-box;
+  width: 70px;
+  border: 3px solid #9ccc65;
+}
+
+.setting-wrapper {
+  border-bottom: 2px solid #ccc;
+  padding: 2px 0px;
+  position: relative;
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user-img {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  justify-content: space-evenly;
+  font-weight: 200;
+}
+
+.user button {
+  display: flex;
+  height: fit-content;
+  padding: 5px 1px;
+  cursor: pointer;
+  background: none;
+  border: 0px solid;
+  border-color: #635e5eb5;
+  width: 20px;
+}
+
+.user button img {
+  height: 10px;
+}
+.setting {
+  position: absolute;
+  top: 81px;
+  list-style: none;
+  background: white;
+  text-align: start;
+  box-shadow: 0px 0px 5px #00000078;
+  border-radius: 6px;
+  right: 0px;
+}
+
+.setting-item {
+  padding: 6px 0px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 18px;
+  word-break: break-word;
+}

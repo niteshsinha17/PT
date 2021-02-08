@@ -1,0 +1,174 @@
+.board {
+  display: grid;
+  grid-template-columns: 1fr 4.5fr;
+  text-align: start;
+  height: 100%;
+}
+
+.close {
+  grid-template-columns: 0% 100%;
+}
+
+.board-wrapper {
+  height: 88vh;
+}
+.sidebar-list {
+  overflow-y: scroll;
+  height: 100%;
+}
+.board-chapter-name {
+  text-align: start;
+  padding: 10px 10%;
+  color: white;
+  text-transform: capitalize;
+  color: rgb(76, 76, 241);
+  border-bottom: 3px solid #eee;
+  border-top: 3px solid #eee;
+}
+
+.topic-active::before {
+  position: absolute;
+  content: "";
+  background: rgb(76, 76, 241);
+  width: 8px;
+  height: 100%;
+}
+
+.topic-active {
+  background: #eee;
+}
+
+.sidebar-item {
+  box-sizing: border-box;
+  display: grid;
+  height: 60px;
+  cursor: pointer;
+  position: relative;
+  padding: 0px 10px;
+  color: rgb(76, 74, 74);
+  align-items: center;
+  grid-template-columns: 1fr 3fr;
+}
+
+.sidebar-item:hover {
+  background: #eee;
+}
+.covered {
+  text-align: center;
+}
+
+.sidebar-item img {
+  height: 15px;
+}
+
+.sidebar {
+  position: relative;
+}
+
+.sidebar .cross-bar {
+  position: absolute;
+  width: 40px;
+  right: -41px;
+  background: rgb(210, 227, 245);
+  height: 100%;
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cross-bar button {
+  background: white;
+  border: 0;
+  display: block;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.cross-bar button:focus {
+  outline: black;
+}
+.cross-bar button img {
+  height: 20px;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+.content {
+  padding: 60px;
+  padding-top: 20px;
+  overflow-y: scroll;
+  color: rgb(76, 74, 74);
+}
+
+/* Components */
+
+.heading {
+  text-transform: capitalize;
+  color: rgb(5, 56, 145);
+}
+
+.para {
+  margin-top: 10px;
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.list {
+  list-style: none;
+}
+.list li {
+  /* margin: 10px; */
+}
+
+.note {
+  margin-top: 30px;
+  color: white;
+  display: block;
+  background: black;
+  padding: 5px 10px;
+}
+
+.heading-list,
+.heading-box {
+  padding: 30px 10px;
+  width: 60%;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.673);
+}
+
+.heading-list li {
+  margin-bottom: 12px;
+}
+
+.positive {
+  background: #eee;
+}
+.heading-list-heading {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.heading-box-heading {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.positive .heading-list-heading {
+  color: rgb(103, 103, 255);
+}
+.danger {
+  background: rgb(240, 213, 213);
+}
+.danger .heading-list-heading {
+  color: rgb(255, 68, 68);
+}
+
+.fact {
+  background: rgb(219, 245, 217);
+}
+.fact .heading-box-heading {
+  color: rgb(27, 150, 72);
+}

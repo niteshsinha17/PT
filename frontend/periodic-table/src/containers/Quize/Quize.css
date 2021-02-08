@@ -1,0 +1,70 @@
+.quize {
+  height: 100%;
+}
+
+.kbc {
+  position: relative;
+  background: #151753;
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.question {
+  border: 2px solid;
+  padding: 10px;
+  min-width: 400px;
+  text-align: center;
+  border-right: 0;
+  border-left: 0;
+}
+
+.kbc-options {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  text-align: center;
+  margin-top: 37px;
+}
+
+.kbc-points {
+  margin-bottom: 10px;
+  color: yellow;
+}
+.kbc-locked {
+  background: #a3a300;
+}
+.kbc-wrong {
+  background: #ff4141;
+}
+
+.kbc-right {
+  background: #288528;
+}
+.option.selected {
+  width: 250px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 27px;
+  cursor: pointer;
+}
+
+.kbc-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.kbc-controls button {
+  padding: 2px 15px;
+  margin: 0px 10px;
+  cursor: pointer;
+}

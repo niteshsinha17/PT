@@ -7,8 +7,10 @@ import HeaderButton from "./HeaderButton";
 import Input from "../../components/UI/Input/Input";
 import Model from "../../components/UI/Model/Model";
 import LoginForm from "../../components/Forms/LoginForm/LoginForm";
+import Setting from "../Setting/Setting";
 import "./Header.css";
 import * as actions from "../../store/actions/index";
+
 class Header extends Component {
   render() {
     let loginForm =
@@ -17,7 +19,24 @@ class Header extends Component {
           close={this.props.loginFormViewHandler}
           show={this.props.showLoginForm}
         />
-      ) : null;
+      ) : <Setting />;
+
+    let account =this.props.authenticated === true ? null : (
+      <div>
+        <HeaderButton
+          click={this.props.showRegisterFormViewHandler}
+          _for="register-btn"
+        >
+          Register
+        </HeaderButton>
+        <HeaderButton
+          click={this.props.loginFormViewHandler}
+          _for="login-btn"
+        >
+          Login
+        </HeaderButton>
+      </div>
+    )
     return (
       <div className="navbar">
         <ul className="nav">
@@ -33,31 +52,13 @@ class Header extends Component {
             Course
           </NavItem>
           <NavItem
-            to="/study-material"
+            to="/games"
             exact={false}
-            locked={!this.props.material_access}
           >
-            Study Material
+            Games
           </NavItem>
         </ul>
-        <div className="account-info">
-          {this.props.authenticated === true ? null : (
-            <div>
-              <HeaderButton
-                click={this.props.showRegisterFormViewHandler}
-                _for="register-btn"
-              >
-                Register
-              </HeaderButton>
-              <HeaderButton
-                click={this.props.loginFormViewHandler}
-                _for="login-btn"
-              >
-                Login
-              </HeaderButton>
-            </div>
-          )}
-        </div>
+        {account}
         {loginForm}
         <Model
           close={this.props.loginFormViewHandler}
