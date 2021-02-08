@@ -68,7 +68,7 @@ class Command(BaseCommand):
 
     def create_sections(self, _type):
         if _type == 'period':
-            for period in range(1, self.no_of_groups+1):
+            for period in range(1, self.no_of_periods+1):
                 p, _ = Period.objects.get_or_create(name=period)
                 self.periods.append(p)
                 p.save()
