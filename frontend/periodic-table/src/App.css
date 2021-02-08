@@ -12,6 +12,7 @@
   /* font-family: sans-serif; */
   justify-content: center;
   min-height: 100vh;
+  background: #f7f7f7;
 }
 
 .lock {

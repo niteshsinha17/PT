@@ -59,17 +59,19 @@ class Element(models.Model):
         ('Artificial', 'Artificial')
     )
 
-    CATEGORIES = (
-        ('Alkali Metal', 'Alkali Metal'),
-        ('Alkaline Earth Metal', 'Alkaline Earth Metal'),
+    TYPE_CATEGORIES = (
         ('Transition Metal', 'Transition Metal'),
         ('Actinide', 'Actinide'),
         ('Lanthanide', 'Lanthanide'),
-        ('Post Transition Metal', 'Post Transition Metal'),
-        ('Other Non Metal', 'Other Non Metal'),
+        ('Transactinide', 'Transactinide'),
+        ('Nonmetal', 'Nonmetal'),
+        ('Metal', 'Metal'),
         ('Metalloid', 'Metalloid'),
         ('Noble Gas', 'Noble Gas'),
+        ('Alkali Metal', 'Alkali Metal'),
+        ('Alkaline Earth Metal', 'Alkaline Earth Metal'),
         ('Halogen', 'Halogen'),
+        ('Not Defined', 'Not Defined')
     )
 
     atomic_number = models.IntegerField(null=True, blank=True)
@@ -91,10 +93,7 @@ class Element(models.Model):
     metal = models.BooleanField(default=False)
     non_metal = models.BooleanField(default=False)
     metalloid = models.BooleanField(default=False)
-    _type = models.CharField(
-        max_length=30, choices=CATEGORIES, null=True, blank=True)
-    color = models.CharField(max_length=30, null=True, blank=True)
-
+    type = models.CharField(max_length=30, choices=TYPE_CATEGORIES)
     atomic_radius = models.FloatField(null=True, blank=True)
     electronegativity = models.FloatField(null=True, blank=True)
     first_ionization = models.FloatField(null=True, blank=True)

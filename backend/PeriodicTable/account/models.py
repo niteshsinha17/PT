@@ -1,17 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
-from Course.models import Chapter, Topic
+from Course.models import Chapter
 # Create your models here.
 
 
 class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, blank=True, null=True)
-    # chapter_completed = models.IntegerField(default=0, blank=True)
-    current_topic = models.ForeignKey(
-        Topic, on_delete=models.CASCADE, blank=True, null=True)
-    current_chapter = models.ForeignKey(
-        Chapter, on_delete=models.CASCADE, blank=True, null=True, related_name="current_chapter")
+    chapter_completed = models.IntegerField(default=0, blank=True)
+    topic_completed = models.IntegerField(default=0, blank=True)
+    total_chapter = models.IntegerField(default=0, blank=True)
     profile_image = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
