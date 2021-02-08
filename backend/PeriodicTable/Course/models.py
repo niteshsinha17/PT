@@ -2,17 +2,17 @@ from django.db import models
 
 
 class Chapter(models.Model):
-    chapter_name = models.CharField(default='', blank=True, max_length=200)
+    name = models.CharField(default='', blank=True, max_length=200)
     chapter_number = models.PositiveIntegerField(default=1)
     slug = models.SlugField(max_length=250, null=True, blank=True)
     read_time = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
-        return self.chapter_name
+        return self.name
 
 
 class Topic(models.Model):
-    topic_name = models.CharField(default='', blank=True, max_length=200)
+    name = models.CharField(default='', blank=True, max_length=200)
     topic_number = models.PositiveIntegerField(default=1)
     slug = models.SlugField(max_length=250, null=True, blank=True)
     chapter = models.ForeignKey(
@@ -20,7 +20,7 @@ class Topic(models.Model):
     read_time = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
-        return self.topic_name
+        return self.name
 
 
 class Image(models.Model):
