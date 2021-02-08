@@ -22,7 +22,11 @@ class ChapterViewSet(viewsets.ViewSet):
             user = Token.objects.get(key=token).user
             profile = Profile.objects.get(user=user)
             print(profile.__dict__)
+            # print(type(profile))
+            # chapter_data = ChapterSerializer(chapter)
             current_chapter_data = ProfileCourseSerializer(profile)
+            # response = chapter_serializer.data
+            # response.append({'current_chapter': current_chapter_data.data})
             response = {'Chapters': chapter_serializer.data,
                         'current_chapter': current_chapter_data.data}
 
