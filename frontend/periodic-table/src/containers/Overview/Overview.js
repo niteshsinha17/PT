@@ -5,7 +5,7 @@ class Overview extends Component {
   render() {
     return (
       <div>
-        <PeriodicTable controls={true} />
+        {/* <PeriodicTable controls={true} /> */}
       </div>
     );
   }

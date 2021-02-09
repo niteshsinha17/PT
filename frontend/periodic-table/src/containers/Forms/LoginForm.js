@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import Model from "../../UI/Model/Model";
-import Input from "../../UI/Input/Input";
-import * as actions from "../../../store/actions/index";
+import Input from "../../components/UI/Input/Input";
+import * as actions from "../../store/actions/index";
+import "./Form.css"
 
 class LoginForm extends Component {
   state = {
@@ -93,6 +92,7 @@ class LoginForm extends Component {
   };
 
   render() {
+    
     const loginFormElements = [];
     for (let key in this.state.controls) {
       loginFormElements.push({
@@ -114,17 +114,13 @@ class LoginForm extends Component {
       />
     ));
     return (
-      <Model
-        close={this.props.close}
-        modelType="form-model"
-        show={this.props.show}
-      >
+      <>
         <form onSubmit={this.submitHandler}>
-          <h2>Login Form</h2>
+          <h2>Please Login Here</h2>
           {loginForm}
-          <input type="submit" className="login-form-btn" value="Login" />
+          <input type="submit" className="form-btn" value="Login" />
         </form>
-      </Model>
+      </>
     );
   }
 }

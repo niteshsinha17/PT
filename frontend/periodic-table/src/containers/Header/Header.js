@@ -1,44 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
 import logo from "../../Eu.png";
 import NavItem from "./NavItem";
 import HeaderButton from "./HeaderButton";
-import Input from "../../components/UI/Input/Input";
-import Model from "../../components/UI/Model/Model";
-import LoginForm from "../../components/Forms/LoginForm/LoginForm";
 import Setting from "../Setting/Setting";
 import "./Header.css";
 import * as actions from "../../store/actions/index";
 
 class Header extends Component {
   render() {
-    let loginForm =
-      this.props.authenticated === false ? (
-        <LoginForm
-          close={this.props.loginFormViewHandler}
-          show={this.props.showLoginForm}
-        />
-      ) : <Setting />;
-
-    let account =this.props.authenticated === true ? null : (
-      <div>
-        <HeaderButton
-          click={this.props.showRegisterFormViewHandler}
-          _for="register-btn"
-        >
-          Register
-        </HeaderButton>
-        <HeaderButton
-          click={this.props.loginFormViewHandler}
-          _for="login-btn"
-        >
-          Login
-        </HeaderButton>
-      </div>
-    )
+    let account =
+      this.props.authenticated === true ? (
+        <Setting />
+      ) : (
+        <div>
+          <HeaderButton
+            click={this.props.showRegisterFormViewHandler}
+            _for="register-btn"
+          >
+            Register
+          </HeaderButton>
+          <HeaderButton
+            click={this.props.loginFormViewHandler}
+            _for="login-btn"
+          >
+            Login
+          </HeaderButton>
+        </div>
+      );
     return (
-      <div className="navbar">
+      <motion.div
+        transition={{ when: "beforeChildren" }}
+        initial={{ y: -50 }}
+        animate={{ y: 0 }}
+        className="navbar"
+      >
         <ul className="nav">
           <li className="nav-item">
             <span className="navbar-brand">
@@ -51,48 +49,18 @@ class Header extends Component {
           <NavItem to="/course" exact={true} locked={!this.props.authenticated}>
             Course
           </NavItem>
-          <NavItem
-            to="/games"
-            exact={false}
-          >
+          <NavItem to="/games" exact={false}>
             Games
           </NavItem>
         </ul>
-        {account}
-        {loginForm}
-        <Model
-          close={this.props.loginFormViewHandler}
-          modelType="form-model"
-          show={this.props.showRegisterForm}
+        <motion.div
+          transition={{ delay: 0.3 }}
+          initial={{ x: 400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1, type: "spring", stiffness: 2 }}
         >
-          <form>
-            <h2>Register Form</h2>
-            <Input
-              inputtype="input"
-              type="text"
-              label="Username"
-              placeholder="Username"
-            />
-            <Input
-              inputtype="input"
-              type="password"
-              label="Password"
-              placeholder="Passwprd"
-            />
-            <Input
-              inputtype="input"
-              type="password"
-              label="Reenter Password"
-              placeholder="Confirm Passwprd"
-            />
-            <input
-              type="submit"
-              className="register-form-btn"
-              value="Register"
-            />
-          </form>
-        </Model>
-      </div>
+          {account}
+        </motion.div>
+      </motion.div>
     );
   }
 }
@@ -101,18 +69,16 @@ const mapStateToProps = (state) => {
   return {
     authenticated: state.auth.is_authenticated,
     material_access: state.material.is_access,
-    showLoginForm: state.auth.showLoginForm,
-    showRegisterForm: state.auth.showRegisterForm,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     loginFormViewHandler: () => {
-      dispatch(actions.loginFormHandler());
+      dispatch(actions.toggleLoginForm());
     },
     registerFormHandler: () => {
-      dispatch(actions.registerFormHandler());
+      dispatch(actions.toggleRegisterForm());
     },
   };
 };

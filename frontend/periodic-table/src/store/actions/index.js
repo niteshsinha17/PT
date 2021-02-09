@@ -1,8 +1,9 @@
 export {
     auth,
-    loginFormHandler,
-    registerFormHandler,
-    checkAuth
+    toggleLoginForm,
+    toggleRegisterForm,
+    checkAuth,
+    closeAll
 } from './auth';
 
 export{

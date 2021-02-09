@@ -5,9 +5,10 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
-  is_authenticated: false,
+  isAuthenticated: false,
   showLoginForm: false,
   showRegisterForm: false,
+  showBackdrop:false
 };
 
 const updateObject = (state, updatedProperties) => {
@@ -46,16 +47,24 @@ const reducer = (state = initialState, action) => {
       return authSuccess(state, action);
     case actionTypes.AUTH_FAIL:
       return authFail(state, action);
-    case actionTypes.CHANGE_LOGIN_FORM_VIEW:
+    case actionTypes.TOGGLE_LOGIN_FORM:
       return updateObject(state, {
         showRegisterForm: false,
         showLoginForm: !state.showLoginForm,
+        showBackdrop:!state.showLoginForm
       });
-    case actionTypes.CHANGE_REGISTER_FORM_VIEW:
+    case actionTypes.TOGGLE_REGISTER_FORM:
       return updateObject(state, {
         showRegisterForm: !state.showRegisterForm,
         showLoginForm: false,
+        showBackdrop:!state.showRegisterForm
       });
+    case actionTypes.CLOSE_ALL:
+      return updateObject(state,{
+        showLoginForm:false,
+        showBackdrop:false,
+        showRegisterForm:false
+      })
     default:
       return state;
   }

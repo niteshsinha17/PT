@@ -7,8 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 
 from Course.models import Chapter, Topic
-from Course.api.serializers import ChapterSerializer, TopicSerializer, ChaptersSerializer, ProfileCourseSerializer
-from account.api.serializers import AccountSerializer
+from Course.api.serializers import ChapterSerializer, TopicSerializer, ChaptersSerializer, ProfileCourseSerializer, ProfileTopicSerializer
 from account.models import Profile
 
 
@@ -21,12 +20,7 @@ class ChapterViewSet(viewsets.ViewSet):
             _, token = auth.split()
             user = Token.objects.get(key=token).user
             profile = Profile.objects.get(user=user)
-            print(profile.__dict__)
-            # print(type(profile))
-            # chapter_data = ChapterSerializer(chapter)
             current_chapter_data = ProfileCourseSerializer(profile)
-            # response = chapter_serializer.data
-            # response.append({'current_chapter': current_chapter_data.data})
             response = {'Chapters': chapter_serializer.data,
                         'current_chapter': current_chapter_data.data}
 
@@ -36,41 +30,37 @@ class ChapterViewSet(viewsets.ViewSet):
             response = {'Chapters': response}
             return Response(response)
 
-    def retrieve(self, request, slug=None):
-        chapter = Chapter.objects.get(slug=slug)
+    def retrieve(self, request, chapter_slug=None, topic_slug=None):
+        chapter = Chapter.objects.get(slug=chapter_slug)
         queryset = Topic.objects.filter(chapter=chapter)
         serializer = TopicSerializer(queryset, many=True)
-
-        try:
-             auth = request.META.get('HTTP_AUTHORIZATION')
-            _, token = auth.split()
-            user = Token.objects.get(key=token).user
-            profile = Profile.objects.get(user=user)
-            chapter_data = ChapterSerializer(chapter)
-            current_chapter_data = ProfileCourseSerializer(profile)
-            # current_chapter = profile.chapter_completed + 1
-            # if current_chapter == pk:
-            #     current_topic = profile.topic_completed + 1
-            # elif current_chapter < pk:
-            #     current_topic = "cannot access"
-            # else:
-            #     current_topic = 1
-            # response = list(serializer.data)
-            # response.append({'current_topic': current_topic,
-            #                  'current_chapter': current_chapter})
-            response = chapter_data.data+current_chapter_data.data
+        if topic_slug is None:
+            try:
+                auth = request.META.get('HTTP_AUTHORIZATION')
+                _, token = auth.split()
+                user = Token.objects.get(key=token).user
+                profile = Profile.objects.get(user=user)
+                current_chapter = profile.current_chapter
+                if current_chapter == chapter:
+                    current_topic_data = ProfileTopicSerializer(profile)
+                else:
+                    current_topic_data = Topic.objects.get(
+                        chapter=chapter, topic_number=1)
+                    current_topic_data = TopicSerializer(current_topic_data)
+                response = {'Topics': serializer.data,
+                            'current_topic': current_topic_data.data}
+                return Response(response)
+            except:
+                response = list(serializer.data)
+                response = {'Topics': response}
+                return Response(response)
+        else:
+            topic_object = Topic.objects.get(slug=topic_slug)
+            requested_topic = TopicSerializer(topic_object)
+            response = {'Topics': serializer.data,
+                        'requested_topic': requested_topic.data}
             return Response(response)
-        except:
-            pass
-            return Response(serializer.data)
-
-    def get_topic(self, request, slug=None, topic_slug=None):
-        topic_object = Topic.objects.get(slug=topic_slug)
-        serializer = TopicSerializer(topic_object)
-        print(serializer)
-        return Response(serializer.data)
 
 
 chapter_list = ChapterViewSet.as_view({'get': 'list'})
 topic_list = ChapterViewSet.as_view({'get': 'retrieve'})
-topic = ChapterViewSet.as_view({'get': 'get_topic'})

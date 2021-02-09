@@ -2,15 +2,21 @@ import axios from "axios";
 import * as actionTypes from "./actionTypes";
 import qs from "qs";
 
-export const loginFormHandler = () => {
+export const toggleLoginForm = () => {
   return {
-    type: actionTypes.CHANGE_LOGIN_FORM_VIEW,
+    type: actionTypes.TOGGLE_LOGIN_FORM,
   };
 };
 
-export const registerFormHandler = () => {
+export const toggleRegisterForm = () => {
   return {
-    type: actionTypes.CHANGE_REGISTER_FORM_VIEW,
+    type: actionTypes.TOGGLE_REGISTER_FORM,
+  };
+};
+
+export const closeAll = () => {
+  return {
+    type: actionTypes.CLOSE_ALL,
   };
 };
 
@@ -80,7 +86,7 @@ export const auth = (username, password) => {
     };
     axios(options)
       .then((response) => {
-        dispatch(loginFormHandler());
+        dispatch(toggleLoginForm());
         dispatch(authSuccess(response.data));
       })
       .catch((err) => {
