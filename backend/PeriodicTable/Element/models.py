@@ -94,7 +94,8 @@ class Element(models.Model):
     _type = models.CharField(
         max_length=30, choices=CATEGORIES, null=True, blank=True)
     color = models.CharField(max_length=30, null=True, blank=True)
-
+    exception = models.BooleanField(null=True, blank=True)
+    exception_type = models.CharField(max_length=50, null=True, blank=True)
     atomic_radius = models.FloatField(null=True, blank=True)
     electronegativity = models.FloatField(null=True, blank=True)
     first_ionization = models.FloatField(null=True, blank=True)

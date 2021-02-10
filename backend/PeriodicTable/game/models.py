@@ -3,24 +3,31 @@ from Course.models import Topic, Chapter
 # Create your models here.
 
 
-class QuizTopic(models.Model):
-    topic = models.ForeignKey(
-        Topic, null=True, blank=True, on_delete=models.CASCADE)
-
-
-class QuizChapter(models.Model):
-    chapter = models.ForeignKey(
-        Chapter, null=True, blank=True, on_delete=models.CASCADE)
-
-
 class Question(models.Model):
-    quiz_topic = models.ForeignKey(
-        QuizTopic, null=True, blank=True, on_delete=models.CASCADE)
-    quiz_chapter = models.ForeignKey(
-        QuizChapter, null=True, blank=True, on_delete=models.CASCADE)
-    question = models.CharField(max_length=500)
-    option1 = models.CharField(max_length=200, blank=True)
-    option2 = models.CharField(max_length=200, blank=True)
-    option3 = models.CharField(max_length=200, blank=True)
-    option4 = models.CharField(max_length=200, blank=True)
-    answer = models.CharField(max_length=200, blank=True)
+    topic = models.ForeignKey(
+        Topic, null=True, blank=True, on_delete=models.CASCADE, related_name='questions')
+    chapter = models.ForeignKey(
+        Chapter, null=True, blank=True, on_delete=models.CASCADE, related_name='questions')
+    question = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.question
+
+
+class Option(models.Model):
+    question = models.ForeignKey(
+        Question, null=True, blank=True, on_delete=models.CASCADE, related_name='options')
+    option = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.option
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(
+        Question, null=True, blank=True, on_delete=models.CASCADE, related_name='answer')
+    answer = models.CharField(max_length=200, null=True, blank=True)
+    reason = models.CharField(max_length=600, null=True, blank=True)
+
+    def __str__(self):
+        return self.answer
