@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.serializers import ModelSerializer
+from account.models import ChapterScore
 
 
 class AccountSerializer(ModelSerializer):
@@ -16,3 +17,10 @@ class AccountSerializer(ModelSerializer):
     #     user.save()
     #     # User.objects.create(user=user, **profile_data)
     #     return user
+
+
+class ChapterScoreSerializer(ModelSerializer):
+
+    class Meta:
+        model = ChapterScore
+        fields = ['attempted', 'cleared', 'scored_max']

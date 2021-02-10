@@ -29,6 +29,9 @@ class DoYouKnow(models.Model):
     element = models.ForeignKey(
         Element, null=True, blank=True, on_delete=models.CASCADE, related_name='doyouknow')
 
+    def __str__(self):
+        return self.info
+
     class Meta:
         verbose_name = 'Do You Know Note'
         verbose_name_plural = 'Do You Know Notes'

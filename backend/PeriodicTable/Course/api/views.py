@@ -5,9 +5,11 @@ from rest_framework.response import Response
 from rest_framework import exceptions
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+from random import choice
 
-from Course.models import Chapter, Topic
-from Course.api.serializers import ChapterSerializer, TopicSerializer, ChaptersSerializer, ProfileCourseSerializer, ProfileTopicSerializer
+from Course.models import Chapter, Topic, DoYouKnow
+from Course.api.serializers import ChapterSerializer, TopicSerializer, ChaptersSerializer, ProfileCourseSerializer, ProfileTopicSerializer, DoYouKnowSerializer
 from account.models import Profile
 
 
@@ -62,5 +64,26 @@ class ChapterViewSet(viewsets.ViewSet):
             return Response(response)
 
 
+class DoYouKnowView(viewsets.ModelViewSet):
+    pks = DoYouKnow.objects.values_list('pk', flat=True)
+    random_pk = choice(pks)
+    queryset = DoYouKnow.objects.get(pk=random_pk)
+    # queryset = DoYouKnow.objects.get(id=2)
+    serializer_class = DoYouKnowSerializer
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
+
+
+class ExampleView(APIView):
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
+
+    def get(self, request, format=None):
+        print("SJ")
+        content = {
+            'status': 'request was permitted'
+        }
+        return Response(content)
+
+
 chapter_list = ChapterViewSet.as_view({'get': 'list'})
 topic_list = ChapterViewSet.as_view({'get': 'retrieve'})
+dyk_list = DoYouKnowView.as_view({'get': 'list'})

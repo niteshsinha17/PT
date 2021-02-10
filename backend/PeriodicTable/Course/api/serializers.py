@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from Course.models import Chapter, Topic
+from Course.models import Chapter, Topic, DoYouKnow
 from account.models import Profile
 
 
@@ -40,3 +40,9 @@ class ProfileCourseSerializer(ModelSerializer):
     class Meta:
         model = Profile
         fields = ['current_chapter']
+
+
+class DoYouKnowSerializer(ModelSerializer):
+    class Meta:
+        model = DoYouKnow
+        fields = ['info', 'id']
