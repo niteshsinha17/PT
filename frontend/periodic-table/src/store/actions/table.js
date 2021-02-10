@@ -58,3 +58,47 @@ export const tableLoad = (data) => {
     }
   };
 };
+
+export const showElementSuccess = (data) => {
+  return {
+    type: actionTypes.SHOW_ELEMENT,
+    element: data,
+  };
+};
+
+export const removeElement = () => {
+  return {
+    type: actionTypes.HIDE_ELEMENT,
+  };
+};
+
+export const showElementFail = (err_msg) => {
+  return {
+    type: actionTypes.SHOW_ELEMENT_FAIL,
+    err_msg:err_msg
+  };
+};
+
+export const showElement = (payload) => {
+  return (dispatch) => {
+    const token = localStorage.getItem("euToken") || null;
+    const url = "http://127.0.0.1:8000/api/element/" + payload.atomicNumber;
+    const options = {
+      method: "GET",
+      body: {
+        HTTP_AUTHORIZATION: `Token ${token}`,
+      },
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      url,
+    };
+    axios(options)
+      .then((response) => {
+        dispatch(showElementSuccess(response.data));
+      })
+      .catch((err) => {
+        console.log(err.response);
+        let err_msg = err.response.data.detail
+        dispatch(showElementFail(err_msg));
+      });
+  };
+};

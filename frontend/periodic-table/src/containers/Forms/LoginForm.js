@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Input from "../../components/UI/Input/Input";
 import * as actions from "../../store/actions/index";
-import "./Form.css"
+import "./Form.css";
 
 class LoginForm extends Component {
   state = {
@@ -92,7 +92,6 @@ class LoginForm extends Component {
   };
 
   render() {
-    
     const loginFormElements = [];
     for (let key in this.state.controls) {
       loginFormElements.push({

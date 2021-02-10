@@ -36,10 +36,13 @@ const Element = (props) => {
     controlContext.selected === "non_metal"
   ) {
   }
-
+  classes.push(props.el.color.slice(1));
+  if (props.selectedElement === props.el.id) {
+    classes.push("selected");
+  }
   return (
     <div
-      onClick={(event) => controlContext.showElement(event, props.el.id)}
+      onClick={() => props.showElement(props.el.atomic_number)}
       className={classes.join(" ")}
     >
       {props.el.atomic_number > 21 && props.authenticated === false ? (
@@ -55,8 +58,14 @@ const Element = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    authenticated: state.auth.is_authenticated,
+    authenticated: state.auth.isAuthenticated,
+    selectedElement: state.table.selectedElement,
   };
 };
 
-export default connect(mapStateToProps, null)(Element);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    showElement: (no) => dispatch(actions.showElement({ atomicNumber: no })),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Element);

@@ -1,12 +1,16 @@
 .element {
   width: 52px;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
   height: 40px;
-  border-bottom: 2px solid;
-  margin: 3px;
+  margin: 1px;
+  padding-bottom: 5px;
+  padding: px;
+  margin: 1p;
+  font-weight: 700;
   position: relative;
   cursor: pointer;
 }
+
 .element .lock {
   height: 12px;
 }
@@ -26,9 +30,53 @@
 }
 
 .disable {
-  filter: opacity(0.3);
+  filter: grayscale(0.7);
+  opacity: 0.3;
 }
 .symbol {
   font-size: 14px;
   font-weight: 500;
+}
+
+.ff6666 {
+  background: #f86969;
+  color: #6d0000;
+}
+.fedead {
+  background: #f6b654;
+  color: #ad5000;
+}
+.ffc0bf {
+  background: #455a64;
+  color: #cccccc;
+}
+.ff99cb {
+  background: #660c39;
+  color: #ffd1d9;
+  background: #660c39;
+  color: #ffd1d9;
+}
+.ffbffe {
+  background: #ffd1d9;
+  color: #660c39;
+}
+.cccccc {
+  background: #9e9e9e;
+  color: #f9f9f9;
+}
+.e8e8e8 {
+  background: #d8c731;
+  color: #514700;
+}
+.c1feff {
+  background: #46b0b2cc;
+  color: #085d5f;
+}
+.f1ff90 {
+  background: #a0b221;
+  color: #e1ffb1;
+}
+.cccc9a {
+  background: #8c6793;
+  color: #e8e8e8;
 }

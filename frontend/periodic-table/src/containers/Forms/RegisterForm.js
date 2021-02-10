@@ -107,15 +107,15 @@ class RegisterForm extends Component {
   };
 
   render() {
-    const loginFormElements = [];
+    const registerFormElements = [];
     for (let key in this.state.controls) {
-      loginFormElements.push({
+      registerFormElements.push({
         id: key,
         config: this.state.controls[key],
       });
     }
 
-    const loginForm = loginFormElements.map((formElement) => (
+    const registerForm = registerFormElements.map((formElement) => (
       <Input
         key={formElement.id}
         elementType={formElement.config.elementType}
@@ -128,17 +128,11 @@ class RegisterForm extends Component {
       />
     ));
     return (
-      <Model
-        close={this.props.close}
-        modelType="form-model"
-        show={this.props.show}
-      >
-        <form onSubmit={this.submitHandler}>
-          <h2>Please Login Here</h2>
-          {loginForm}
-          <input type="submit" className="login-form-btn" value="Login" />
-        </form>
-      </Model>
+      <form onSubmit={this.submitHandler}>
+        <h2>Learn with fun</h2>
+        {registerForm}
+        <input type="submit" className="form-btn" value="Login" />
+      </form>
     );
   }
 }

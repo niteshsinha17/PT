@@ -15,7 +15,6 @@ class PeriodicTable extends Component {
     selected: null,
     selected_no: 0,
     selected_block: null,
-    selectedElement: null,
   };
 
   componentDidMount() {
@@ -44,21 +43,10 @@ class PeriodicTable extends Component {
       selected_block: null,
     });
   };
-  showElement = (event, element) => {
-    event.stopPropagation();
-    this.setState({ selectedElement: element });
-  };
 
-  hideElement = () => {
-    console.log("now");
-    this.setState({ selectedElement: null });
-  };
   render() {
     let elementDetail = "";
     let table = <div>Loading</div>;
-    if (this.state.selectedElement) {
-      elementDetail = <ElementDetail element={this.state.selectedElement} />;
-    }
     if (this.props.loaded === true) {
       table = (
         <div className="table-wrapper">
@@ -92,7 +80,7 @@ class PeriodicTable extends Component {
         >
           {this.props.controls ? <Controls /> : null}
           {table}
-          {elementDetail}
+          {this.props.selectedElement && <ElementDetail />}
         </ControlContext.Provider>
       </div>
     );
@@ -106,6 +94,7 @@ const mapStateToProps = (state) => {
     p_block: state.table.p_block,
     d_block: state.table.d_block,
     f_block: state.table.f_block,
+    selectedElement: state.table.selectedElement,
   };
 };
 

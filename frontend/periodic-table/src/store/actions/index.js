@@ -1,11 +1,9 @@
 export {
-    auth,
-    toggleLoginForm,
-    toggleRegisterForm,
-    checkAuth,
-    closeAll
-} from './auth';
+  auth,
+  toggleLoginForm,
+  toggleRegisterForm,
+  checkAuth,
+  closeAll,
+} from "./auth";
 
-export{
-    tableLoad
-} from './table'
+export { tableLoad, showElement, removeElement } from "./table";

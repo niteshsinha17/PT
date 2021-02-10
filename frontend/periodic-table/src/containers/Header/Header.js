@@ -17,7 +17,7 @@ class Header extends Component {
       ) : (
         <div>
           <HeaderButton
-            click={this.props.showRegisterFormViewHandler}
+            click={this.props.registerFormHandler}
             _for="register-btn"
           >
             Register
@@ -46,10 +46,10 @@ class Header extends Component {
           <NavItem to="/" exact={true} locked={false}>
             Overview
           </NavItem>
-          <NavItem to="/course" exact={true} locked={!this.props.authenticated}>
+          <NavItem to="/course" exact={true}>
             Course
           </NavItem>
-          <NavItem to="/games" exact={false}>
+          <NavItem to="/games" locked={!this.props.authenticated}>
             Games
           </NavItem>
         </ul>

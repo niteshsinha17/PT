@@ -1,8 +1,7 @@
 .control-wrapper {
-  padding: 16px;
+  padding: 0px 60px;
   margin: 7px auto;
-  width: 92%;
-  color: black;
+  color: rgb(45, 43, 43);
   border-radius: 2px;
 }
 

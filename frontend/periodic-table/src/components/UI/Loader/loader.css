@@ -1,6 +1,15 @@
 .loader {
   position: fixed;
   height: 100vh;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .wrap {

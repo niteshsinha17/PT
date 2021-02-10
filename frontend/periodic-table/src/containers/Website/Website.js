@@ -12,23 +12,39 @@ import Board from "../../components/Board/Board";
 import LoginForm from "../Forms/LoginForm";
 import RegisterForm from "../Forms/RegisterForm";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
+import Loader from "../../components/UI/Loader/Loader";
 
 class Website extends React.Component {
   state = {
     loading: true,
   };
 
+  hideLoader = () => {
+    this.setState({ loading: false });
+  };
   componentDidMount() {
     this.props.login();
+    // setTimeout(() => {
+    //   this.hideLoader();
+    // }, 2000);
   }
   render() {
     const formVarient = {
       visible: { opacity: 1, y: 0 },
       hidden: { opacity: 0, y: -500 },
+      exit: { opacity: 0, y: -500 },
     };
     return (
       <div>
-        <Header></Header> {/*//Do you know why to use of switch? */}
+        <Header></Header>
+        {/* <Route
+          path="/"
+          render={() => {
+            if (this.state.loading) {
+              return <Loader />;
+            }
+          }}
+        /> */}
         <Route
           path="/"
           render={() => {
@@ -53,8 +69,8 @@ class Website extends React.Component {
                     className="form"
                     initial="hidden"
                     animate="visible"
-                    exit={{ opacity: 0, y: -500 }}
-                    variants={this.formVarient}
+                    exit="exit"
+                    variants={formVarient}
                   >
                     <RegisterForm />
                   </motion.div>
@@ -75,11 +91,7 @@ class Website extends React.Component {
           path="/course"
           exact
           render={() => {
-            console.log(this.props.authenticated);
-            if (this.props.authenticated) {
-              return <Course />;
-            }
-            return <Redirect to="/" />;
+            return <Course />;
           }}
         />
         <Route path="/" exact component={Overview} />

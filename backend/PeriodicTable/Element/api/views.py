@@ -18,14 +18,14 @@ class ElementViewSet(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         # get one element
         if pk > 20:
-            auth = request.META.get('HTTP_AUTHORIZATION')
-            _, token = auth.split()
             try:
+                auth = request.META.get('HTTP_AUTHORIZATION')
+                _, token = auth.split()
                 Token.objects.get(key=token)
             except:
                 raise exceptions.AuthenticationFailed('Login Required')
         queryset = Element.objects.all()
-        element_object = get_object_or_404(queryset, pk=pk)
+        element_object = get_object_or_404(queryset, atomic_number=pk)
         serializer = ElementDetailSerializer(element_object)
         return Response(serializer.data)
 

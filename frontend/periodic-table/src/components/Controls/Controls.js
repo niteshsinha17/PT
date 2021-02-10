@@ -17,11 +17,7 @@ class Controls extends Component {
       {
         id: "metaloid",
         name: "metaloid",
-      },
-      {
-        id: "radio_active_element",
-        name: "radio_active_element",
-      },
+      }
     ],
   };
 
