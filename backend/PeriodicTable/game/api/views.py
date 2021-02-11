@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 
 from game.models import Question, Option, Answer
-from Course.models import Chapter
+from Course.models import Chapter, Topic
 from account.models import Profile, ChapterScore
 from game.api.serializers import QuestionSerializer, QuestionAnswerSerializer
 from account.api.serializers import ChapterScoreSerializer
@@ -61,7 +61,6 @@ class QuestionViewSet(viewsets.ViewSet):
                 question_object = Question.objects.get(
                     question=questions[i]['question'], chapter=chapter)
                 answer_object = Answer.objects.get(question=question_object)
-                # print(answer_object.answer)
                 if answer_object.answer == questions[i]['answer']:
                     scored = scored + 1
             # chapter_score.maximum_max = len(queryset)
@@ -75,6 +74,16 @@ class QuestionViewSet(viewsets.ViewSet):
                     chapter_score.cleared = True
                     chapter_score.save()
                     serializer = QuestionAnswerSerializer(queryset, many=True)
+                    try:
+                        chapter_id = chapter.id
+                        profile.current_chapter = Chapter.objects.get(
+                            id=chapter_id+1)
+                        queryset_topic = Topic.objects.filter(
+                            chapter=profile.current_chapter)
+                        profile.current_topic = queryset_topic[0]
+                        profile.save()
+                    except:
+                        pass
                     chapter_score_serializer = ChapterScoreSerializer(
                         chapter_score)
                     response = {
