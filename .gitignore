@@ -1,4 +1,4 @@
-# *.db
+ *.db
 local_settings.example.py
 # Created by https://www.gitignore.io/api/code,venv,django,python
 # Edit at https://www.gitignore.io/?templates=code,venv,django,python
@@ -42,8 +42,8 @@ yarn-error.log*
 *.pyc
 __pycache__/
 local_settings.py
-#db.sqlite3
-#db.sqlite3-journal
+db.sqlite3
+db.sqlite3-journal
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
