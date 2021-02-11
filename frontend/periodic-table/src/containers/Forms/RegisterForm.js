@@ -100,7 +100,7 @@ class RegisterForm extends Component {
   };
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(
+    this.props.register(
       this.state.controls.username.value,
       this.state.controls.password.value
     );
@@ -139,7 +139,7 @@ class RegisterForm extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (username, password) => dispatch(actions.auth(username, password)),
+    register: (username, password) => dispatch(actions.auth(username, password)),
   };
 };
 export default connect(null, mapDispatchToProps)(RegisterForm);

@@ -10,7 +10,15 @@ const pBlock = (props) => {
       return (
         <div key={"pg-" + i} className="group">
           {group.elements.map((element) => {
-            return <Element group={element.group} block="p" key={element.id} el={element} />;
+            return (
+              <Element
+                type={element._type}
+                group={element.group}
+                block="p"
+                key={element.id}
+                el={element}
+              />
+            );
           })}
         </div>
       );

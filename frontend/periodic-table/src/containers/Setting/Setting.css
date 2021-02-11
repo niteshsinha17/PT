@@ -36,7 +36,7 @@
 }
 
 .user button img {
-  height: 10px;
+  height: 7px;
 }
 .setting {
   position: absolute;
@@ -47,6 +47,7 @@
   box-shadow: 0px 0px 5px #00000078;
   border-radius: 6px;
   right: 0px;
+  z-index: 102;
 }
 
 .setting-item {

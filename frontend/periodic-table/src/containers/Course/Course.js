@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Chapter from "../../components/chapter/Chapter";
 import "./Course.css";
 class Course extends Component {
@@ -139,9 +138,12 @@ class Course extends Component {
     current_chapter: 2,
   };
   render() {
+    let time = 0;
     const chapters = this.state.chapters.map((chapter) => {
+      time += 0.2;
       return (
         <Chapter
+          delay={time}
           color={chapter.color}
           name={chapter.name}
           topic_list={chapter.topic_list}

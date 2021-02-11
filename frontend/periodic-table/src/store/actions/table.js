@@ -75,20 +75,21 @@ export const removeElement = () => {
 export const showElementFail = (err_msg) => {
   return {
     type: actionTypes.SHOW_ELEMENT_FAIL,
-    err_msg:err_msg
+    err_msg: err_msg,
   };
 };
 
 export const showElement = (payload) => {
   return (dispatch) => {
+    console.log(localStorage.getItem("euToken"));
     const token = localStorage.getItem("euToken") || null;
     const url = "http://127.0.0.1:8000/api/element/" + payload.atomicNumber;
     const options = {
       method: "GET",
-      body: {
-        HTTP_AUTHORIZATION: `Token ${token}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Token ${token}`,
       },
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       url,
     };
     axios(options)
@@ -97,7 +98,7 @@ export const showElement = (payload) => {
       })
       .catch((err) => {
         console.log(err.response);
-        let err_msg = err.response.data.detail
+        let err_msg = err.response.data.detail;
         dispatch(showElementFail(err_msg));
       });
   };

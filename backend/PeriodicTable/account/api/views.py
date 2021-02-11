@@ -6,6 +6,7 @@ from rest_framework import permissions, authentication
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework import viewsets
+from rest_framework.authtoken.serializers import AuthTokenSerializer
 
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
@@ -49,7 +50,10 @@ class ObtainAccount(viewsets.ViewSet):
         qeuryset = User.objects.all()
         user = get_object_or_404(qeuryset, pk=pk)
         serializer = AccountSerializer(user)
-        return Response(serializer.data)
+        token, _ = Token.objects.get_or_create(user=user)
+        response = serializer.data
+        response.update({"token": token.key})
+        return Response(response)
 
     def update(self, request, pk=None):
         pass
@@ -62,4 +66,4 @@ class ObtainAccount(viewsets.ViewSet):
 
 
 get_account = ObtainAccount.as_view({'get': 'retrieve'})
-create_account = ObtainAccount.as_view({'get': 'create'})
+register = ObtainAccount.as_view({'get': 'create'})

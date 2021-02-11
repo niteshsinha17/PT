@@ -61,7 +61,7 @@ class PeriodicTable extends Component {
               <PBlock start={12} elements={this.props.p_block} />
             </div>
           </div>
-          <FBlock start={-2} elements={this.props.f_block} />
+          <FBlock start={-1} elements={this.props.f_block} />
         </div>
       );
     }

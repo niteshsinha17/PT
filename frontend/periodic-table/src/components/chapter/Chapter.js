@@ -1,12 +1,23 @@
 import React from "react";
 import Hint from "../../assests/icons/hint.png";
 import Arrow from "../../assests/icons/arrow.png";
+
+import { motion } from "framer-motion";
+
 const chapter = (props) => {
   let _continue = null;
   if (props.id === props.current_chapter) {
-    _continue = <div className="topic-btn">Continue</div>;
+    _continue = (
+      <motion.div whileHover={{ scale: 1.2 }} className="topic-btn">
+        Continue
+      </motion.div>
+    );
   } else if (props.id < props.current_chapter) {
-    _continue = <div className="topic-btn">View</div>;
+    _continue = (
+      <motion.div whileHover={{ scale: 1.2 }} className="topic-btn">
+        View
+      </motion.div>
+    );
   }
   var t = 0;
   const topics = props.topic_list.map((topic) => {
@@ -25,7 +36,13 @@ const chapter = (props) => {
   };
 
   return (
-    <div className="chapter" style={{ background: props.color }}>
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: props.delay }}
+      className="chapter"
+      style={{ background: props.color }}
+    >
       <div className="chapter-name">
         {props.name} <img src={Hint} alt="" />
       </div>
@@ -34,7 +51,7 @@ const chapter = (props) => {
       </div>
       <ul className="topic-list">{topics}</ul>
       {_continue}
-    </div>
+    </motion.div>
   );
 };
 

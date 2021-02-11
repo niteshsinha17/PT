@@ -27,14 +27,26 @@ const Element = (props) => {
     if (controlContext.selected !== props.block) {
       classes.push("disable");
     }
-  } else if (
-    controlContext.selected === "lanthanide" ||
-    controlContext.selected === "actanide"
-  ) {
-  } else if (
-    controlContext.selected === "metal" ||
-    controlContext.selected === "non_metal"
-  ) {
+  } else if (controlContext.selected === "Actanide") {
+    if (props.series !== "act") {
+      classes.push("disable");
+    }
+  } else if (controlContext.selected === "Lanthanide") {
+    if (props.series !== "lan") {
+      classes.push("disable");
+    }
+  } else if (controlContext.selected === "metal") {
+    if (!props.el.metal) {
+      classes.push("disable");
+    }
+  } else if (controlContext.selected === "non-metal") {
+    if (!props.el.non_metal) {
+      classes.push("disable");
+    }
+  } else if (controlContext.selected === "metalloid") {
+    if (!props.el.metalloid) {
+      classes.push("disable");
+    }
   }
   classes.push(props.el.color.slice(1));
   if (props.selectedElement === props.el.id) {

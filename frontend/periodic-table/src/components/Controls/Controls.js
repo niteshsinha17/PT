@@ -8,15 +8,15 @@ class Controls extends Component {
     state_buttons: [
       {
         id: "metal",
-        name: "metal",
+        name: "Metal",
       },
       {
-        id: "non_metal",
-        name: "non-metal",
+        id: "non-metal",
+        name: "Non Metal",
       },
       {
-        id: "metaloid",
-        name: "metaloid",
+        id: "metalloid",
+        name: "Metalloid",
       }
     ],
   };
@@ -61,7 +61,7 @@ class Controls extends Component {
       );
     }
     if (name === "period") {
-      let others = ["Lanthanides", "Actanides"];
+      let others = ["Lanthanide", "Actanide"];
       others.forEach((element) => {
         let classes = ["number-btn"];
         if (this.context.selected === element) {
@@ -86,12 +86,12 @@ class Controls extends Component {
       <div className="control-state">
         {this.state.state_buttons.map((button) => {
           let classes = ["state-btn"];
-          if (button.name === this.context.selected) {
+          if (button.id === this.context.selected) {
             classes.push("active-btn");
           }
           return (
             <Button
-              click={() => this.context.changeState(button.name)}
+              click={() => this.context.changeState(button.id)}
               class={classes.join(" ")}
               key={button.id}
               name={button.name}

@@ -28,12 +28,9 @@ export const checkAuth = () => {
       const url = "http://127.0.0.1:8000/api/account/login/" + userId;
       const options = {
         method: "GET",
-        body: {
-          HTTP_AUTHORIZATION: `Token ${token}`,
-        },
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
-          // HTTP_AUTHORIZATION: `Token ${token}`,
+          Authorization: `Token ${token}`,
         },
         url,
       };
@@ -80,6 +77,31 @@ export const auth = (username, password) => {
     const url = "http://127.0.0.1:8000/api/account/login/";
     const options = {
       method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      data: qs.stringify(authData),
+      url,
+    };
+    axios(options)
+      .then((response) => {
+        dispatch(toggleLoginForm());
+        dispatch(authSuccess(response.data));
+      })
+      .catch((err) => {
+        dispatch(authFail());
+      });
+  };
+};
+
+export const register = (username, password) => {
+  return (dispatch) => {
+    dispatch(authStart());
+    const authData = {
+      username: username,
+      password: password,
+    };
+    const url = "http://127.0.0.1:8000/api/account/register/";
+    const options = {
+      method: "GET",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       data: qs.stringify(authData),
       url,

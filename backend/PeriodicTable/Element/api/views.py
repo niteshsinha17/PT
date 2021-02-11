@@ -20,6 +20,7 @@ class ElementViewSet(viewsets.ViewSet):
         if pk > 20:
             try:
                 auth = request.META.get('HTTP_AUTHORIZATION')
+                print(auth)
                 _, token = auth.split()
                 Token.objects.get(key=token)
             except:
