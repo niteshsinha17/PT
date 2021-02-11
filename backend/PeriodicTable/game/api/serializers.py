@@ -15,3 +15,17 @@ class QuestionSerializer(ModelSerializer):
     class Meta:
         model = Question
         fields = ['question', 'options']
+
+
+class AnswerSerializer(ModelSerializer):
+    class Meta:
+        model = Answer
+        fields = ['answer', 'reason']
+
+
+class QuestionAnswerSerializer(ModelSerializer):
+    answer = AnswerSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Question
+        fields = ['question', 'answer']

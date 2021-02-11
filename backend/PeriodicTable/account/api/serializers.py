@@ -23,4 +23,4 @@ class ChapterScoreSerializer(ModelSerializer):
 
     class Meta:
         model = ChapterScore
-        fields = ['attempted', 'cleared', 'scored_max']
+        fields = ['attempted', 'cleared', 'scored_max', 'maximum_marks']

@@ -23,7 +23,7 @@ class ChapterScore(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
     attempted = models.IntegerField(default=0)
     cleared = models.BooleanField(default=False)
-    maximum_max = models.IntegerField(default=0)
+    maximum_marks = models.IntegerField(default=0)
     scored_max = models.IntegerField(default=0)
 
 # @receiver(post_save, sender=settings.AUTH_USER_MODEL)
