@@ -77,7 +77,6 @@ class ExampleView(APIView):
     throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     def get(self, request, format=None):
-        print("SJ")
         content = {
             'status': 'request was permitted'
         }

@@ -55,7 +55,7 @@ atomic_no,name,symbol,block,atomic_mass,nn,np,ne,period,group,phase,radioactive,
 54,Xenon,Xe,p,131.29,77,54,54,5,18,gas,FALSE,TRUE,FALSE,TRUE,FALSE,Noble Gas,1.2,-1,12.1298,0.00589,161.45,165.03,31,Ramsay and Travers,1898,0.158,5,8
 55,Cesium,Cs,s,132.91,78,55,55,6,1,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Alkali Metal,3.3,0.79,3.8939,1.87,301.7,944,22,Bunsen and Kirchoff,1860,0.242,6,1
 56,Barium,Ba,s,137.33,81,56,56,6,2,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Alkaline Earth Metal,2.8,0.89,5.2117,3.59,1002.15,2170,25,Davy,1808,0.204,6,2
-57,Lanthanum,La,d,138.91,82,57,57,6,-1,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Lanthanide,2.7,1.1,5.5769,6.15,1193.15,3737,19,Mosander,1839,0.195,6,-1
+57,Lanthanum,La,d,138.91,82,57,57,6,3,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Lanthanide,2.7,1.1,5.5769,6.15,1193.15,3737,19,Mosander,1839,0.195,6,-1
 58,Cerium,Ce,f,140.12,82,58,58,6,-1,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Lanthanide,2.7,1.12,5.5387,6.77,1071.15,3716,19,Berzelius,1803,0.192,6,-1
 59,Praseodymium,Pr,f,140.91,82,59,59,6,-1,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Lanthanide,2.7,1.13,5.473,6.77,1204.15,3793,15,von Welsbach,1885,0.193,6,-1
 60,Neodymium,Nd,f,144.24,84,60,60,6,-1,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Lanthanide,2.6,1.14,5.525,7.01,1289.15,3347,16,von Welsbach,1885,0.19,6,-1
@@ -84,10 +84,10 @@ atomic_no,name,symbol,block,atomic_mass,nn,np,ne,period,group,phase,radioactive,
 83,Bismuth,Bi,p,208.98,126,83,83,6,15,solid,FALSE,TRUE,TRUE,FALSE,FALSE,Post Transition Metal,1.6,2.02,7.2856,9.81,544.67,1837,19,Geoffroy the Younger,1753,0.122,6,5
 84,Polonium,Po,p,210,126,84,84,6,16,solid,TRUE,TRUE,FALSE,FALSE,TRUE,Post Transition Metal,1.5,2,8.417,9.32,527.15,1235,34,Curie,1898,-1,6,6
 85,Astatine,At,p,210,125,85,85,6,17,solid,TRUE,TRUE,FALSE,TRUE,FALSE,Halogen,1.4,2.2,9.3,7,575.15,610,21,Corson et al.,1940,-1,6,7
-86,Radon,Rn,p,222,136,86,86,6,18,gas,TRUE,TRUE,TRUE,FALSE,FALSE,Noble Gas,1.3,-1,10.7485,0.00973,202.15,211.3,20,Dorn,1900,0.094,6,8
+86,Radon,Rn,p,222,136,86,86,6,18,gas,TRUE,TRUE,FALSE,TRUE,FALSE,Noble Gas,1.3,-1,10.7485,0.00973,202.15,211.3,20,Dorn,1900,0.094,6,8
 87,Francium,Fr,s,223,136,87,87,7,1,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Alkali Metal,0,0.7,4.0727,1.87,300.15,950,21,Perey,1939,-1,7,1
 88,Radium,Ra,s,226,138,88,88,7,2,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Alkaline Earth Metal,0,0.9,5.2784,5.5,973.15,2010,15,Pierre and Marie Curie,1898,-1,7,2
-89,Actinium,Ac,d,227,138,89,89,7,0,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Actinide,0,1.1,5.17,10.1,1323.15,3471,11,Debierne/Giesel,1899,0.12,7,-1
+89,Actinium,Ac,d,227,138,89,89,7,3,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Actinide,0,1.1,5.17,10.1,1323.15,3471,11,Debierne/Giesel,1899,0.12,7,-1
 90,Thorium,Th,f,232.04,142,90,90,7,0,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Actinide,0,1.3,6.3067,11.7,2028.15,5061,12,Berzelius,1828,0.113,7,-1
 91,Protactinium,Pa,f,231.04,140,91,91,7,0,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Actinide,0,1.5,5.89,15.4,1873.15,4300,14,Hahn and Meitner,1917,-1,7,-1
 92,Uranium,U,f,238.03,146,92,92,7,0,solid,TRUE,TRUE,TRUE,FALSE,FALSE,Actinide,0,1.38,6.1941,19,1405.15,4404,15,Peligot,1841,0.116,7,-1

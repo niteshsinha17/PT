@@ -8,6 +8,7 @@ from .elements_data.f_block import elements as f_block
 
 
 class Command(BaseCommand):
+    help = 'This command create all Elements in database. '
     blocks = ['s', 'p', 'd', 'f']
     no_of_periods = 7
     no_of_groups = 18

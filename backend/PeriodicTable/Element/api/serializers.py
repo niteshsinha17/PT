@@ -1,8 +1,19 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from Element.models import Element, Block, Group
 
 
 class ElementSerializer(ModelSerializer):
+    group = SerializerMethodField('is_group')
+    period = SerializerMethodField('is_period')
+
+    def is_group(self, Element):
+        group = Element.group
+        return group.name
+
+    def is_period(self, Element):
+        period = Element.period
+        return period.name
+
     class Meta:
         model = Element
         fields = ['id', 'name', 'atomic_number', 'symbol', 'period',

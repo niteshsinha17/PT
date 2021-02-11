@@ -4,7 +4,7 @@ from Element.models import Element
 
 class Chapter(models.Model):
     name = models.CharField(default='', blank=True, max_length=200)
-    chapter_number = models.PositiveIntegerField(default=1)
+    number = models.PositiveIntegerField(default=1)
     slug = models.SlugField(max_length=250, null=True, blank=True)
     read_time = models.IntegerField(default=0, blank=True)
 
@@ -14,7 +14,7 @@ class Chapter(models.Model):
 
 class Topic(models.Model):
     name = models.CharField(default='', blank=True, max_length=200)
-    topic_number = models.PositiveIntegerField(default=1)
+    number = models.PositiveIntegerField(default=1)
     slug = models.SlugField(max_length=250, null=True, blank=True)
     chapter = models.ForeignKey(
         Chapter, null=True, blank=True, on_delete=models.CASCADE, related_name='topics')

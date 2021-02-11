@@ -11,6 +11,7 @@ class ChapterAdmin(admin.ModelAdmin):
     inlines = [
         TopicsInline
     ]
+    list_display = ('name', 'slug')
 
 
 admin.site.register(Chapter, ChapterAdmin)
