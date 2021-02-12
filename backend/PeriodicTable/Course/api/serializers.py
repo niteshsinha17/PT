@@ -6,7 +6,7 @@ from account.models import Profile
 class TopicSerializer(ModelSerializer):
     class Meta:
         model = Topic
-        fields = ['name', 'topic_number', 'slug', 'id', 'read_time']
+        fields = ['name', 'number', 'slug', 'id', 'read_time']
 
 
 class ChapterSerializer(ModelSerializer):

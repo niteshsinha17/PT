@@ -65,15 +65,17 @@ class ChapterViewSet(viewsets.ViewSet):
 
 
 class DoYouKnowView(viewsets.ModelViewSet):
-    pks = DoYouKnow.objects.values_list('pk', flat=True)
-    random_pk = choice(pks)
-    queryset = DoYouKnow.objects.get(pk=random_pk)
-    # queryset = DoYouKnow.objects.get(id=2)
-    serializer_class = DoYouKnowSerializer
-    throttle_classes = [UserRateThrottle, AnonRateThrottle]
+    pass
+    # pks = DoYouKnow.objects.values_list('pk', flat=True)
+    # random_pk = choice(pks)
+    # queryset = DoYouKnow.objects.get(pk=random_pk)
+    # # queryset = DoYouKnow.objects.get(id=2)
+    # serializer_class = DoYouKnowSerializer
+    # throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
 
 class ExampleView(APIView):
+    pass
     throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     def get(self, request, format=None):
