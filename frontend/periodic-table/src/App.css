@@ -12,7 +12,11 @@
   /* font-family: sans-serif; */
   justify-content: center;
   min-height: 100vh;
-  background: #f7f7f7;
+}
+
+.dark-theme {
+  color: white;
+  background: #0d1117;
 }
 
 .lock {

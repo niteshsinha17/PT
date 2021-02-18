@@ -13,7 +13,7 @@ import LoginForm from "../Forms/LoginForm";
 import RegisterForm from "../Forms/RegisterForm";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Loader from "../../components/UI/Loader/Loader";
-
+import LeftSlider from "../../components/Sliders/LeftSlider";
 class Website extends React.Component {
   state = {
     loading: true,
@@ -48,43 +48,16 @@ class Website extends React.Component {
         <Route
           path="/"
           render={() => {
-            if (this.props.showLoginForm) {
-              return (
-                <AnimatePresence>
-                  <motion.div
-                    className="form"
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    variants={formVarient}
-                  >
-                    <LoginForm />
-                  </motion.div>
-                </AnimatePresence>
-              );
-            } else if (this.props.showRegisterForm) {
-              return (
-                <AnimatePresence>
-                  <motion.div
-                    className="form"
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    variants={formVarient}
-                  >
-                    <RegisterForm />
-                  </motion.div>
-                </AnimatePresence>
-              );
+            if (this.props.showBackdrop) {
+              return <Backdrop />;
             }
           }}
         />
         <Route
           path="/"
+          exact
           render={() => {
-            if (this.props.showBackdrop) {
-              return <Backdrop />;
-            }
+            return <LeftSlider />;
           }}
         />
         <Route

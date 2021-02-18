@@ -1,0 +1,25 @@
+.sldier-dots span {
+  border-radius: 50%;
+  height: 6px;
+  cursor: pointer;
+  width: 6px;
+  display: block;
+  box-sizing: border-box;
+  background: #464646;
+}
+
+.sldier-dots {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 1px;
+}
+
+.slider-btn {
+  display: flex;
+  height: 43px;
+  cursor: pointer;
+  padding: 2px 5px;
+  border: 1px solid #464646;
+  border-radius: 5px;
+}

@@ -1,7 +1,8 @@
 .element {
   width: 52px;
   padding-bottom: 2px;
-  height: 40px;
+  height: 48px;
+  box-sizing: border-box;
   margin: 1px;
   padding-bottom: 5px;
   padding: px;
