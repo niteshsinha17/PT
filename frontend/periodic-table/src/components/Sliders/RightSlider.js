@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { motion } from "framer-motion";
-import SliderButton from "../Button/SliderButton";
-import BlockButton from "../Button/BlockButton";
+import PeriodButton from "../Button/PeriodButton";
+import SeriesButton from "../Button/SeriesButton";
 import "./Slider.css";
 
-class LeftSlider extends Component {
+class RightSlider extends Component {
   state = {
     periods: [
       {
@@ -29,7 +29,7 @@ class LeftSlider extends Component {
         name: "7",
       },
     ],
-    other: [
+    series: [
       {
         name: "Lanthanide",
       },
@@ -42,24 +42,33 @@ class LeftSlider extends Component {
     const periodButtons = this.state.periods.map((period) => {
       return (
         <li key={period.name.toLowerCase()}>
-          <PeroidButton name={period.name} />
+          <PeriodButton name={period.name} />
+        </li>
+      );
+    });
+    const seriesButtons = this.state.series.map((series) => {
+      return (
+        <li key={series.name.toLowerCase()}>
+          <SeriesButton name={series.name} />
         </li>
       );
     });
     return (
       <motion.div
-        initial={{ x: -100 }}
+        initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ delay: 0.6 }}
-        className="left-slider"
+        className="right-slider"
       >
-        <div className="left-handle">
-          <ul className="handle">{blockButtons}</ul>
-          <SliderButton />
-        </div>
+        <ul className="right-handle">
+          <li className="list-name">Periods</li>
+          {periodButtons}
+          <li className="list-name">Series</li>
+          {seriesButtons}
+        </ul>
       </motion.div>
     );
   }
 }
 
-export default LeftSlider;
+export default RightSlider;

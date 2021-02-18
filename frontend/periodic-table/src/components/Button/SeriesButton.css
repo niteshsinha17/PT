@@ -1,0 +1,9 @@
+.series-btn {
+  font-size: 13px;
+  background: #3939ff;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px #475860;
+  padding: 4px 9px;
+  border-radius: 2px;
+}

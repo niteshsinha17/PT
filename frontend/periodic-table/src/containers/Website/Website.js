@@ -14,6 +14,8 @@ import RegisterForm from "../Forms/RegisterForm";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Loader from "../../components/UI/Loader/Loader";
 import LeftSlider from "../../components/Sliders/LeftSlider";
+import RightSlider from "../../components/Sliders/RightSlider";
+import BottomSlide from "../../components/Sliders/BottomSlide";
 class Website extends React.Component {
   state = {
     loading: true,
@@ -58,6 +60,14 @@ class Website extends React.Component {
           exact
           render={() => {
             return <LeftSlider />;
+          }}
+        />
+
+        <Route
+          path="/"
+          exact
+          render={() => {
+            return <RightSlider />;
           }}
         />
         <Route

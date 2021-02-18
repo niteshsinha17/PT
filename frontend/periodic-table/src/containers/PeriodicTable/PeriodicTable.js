@@ -9,7 +9,7 @@ import ControlContext from "../../context/control";
 import ElementDetail from "../../components/ElementDetail/ElementDetail";
 import * as actions from "../../store/actions/index";
 import { connect } from "react-redux";
-
+import BottomSlide from "../../components/Sliders/BottomSlide";
 class PeriodicTable extends Component {
   state = {
     selected: null,
@@ -49,7 +49,7 @@ class PeriodicTable extends Component {
     let table = <div>Loading</div>;
     if (this.props.loaded === true) {
       table = (
-        <div className="table-wrapper">
+        <div >
           <div className="table">
             <div className="block">
               <SBlock start={0} elements={this.props.s_block} />
@@ -66,7 +66,7 @@ class PeriodicTable extends Component {
       );
     }
     return (
-      <div>
+      <div className="table-wrapper">
         <ControlContext.Provider
           value={{
             selected: this.state.selected,
@@ -80,6 +80,7 @@ class PeriodicTable extends Component {
         >
           {this.props.controls ? <Controls /> : null}
           {table}
+          <BottomSlide/>
           {this.props.selectedElement && <ElementDetail />}
         </ControlContext.Provider>
       </div>

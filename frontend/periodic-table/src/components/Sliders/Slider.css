@@ -32,3 +32,56 @@ ul.handle {
 ul.handle li {
   margin: 22px 0px;
 }
+
+.right-slider {
+  border-left: 1px solid #2c2c2c;
+  position: fixed;
+  background: #161b22;
+  height: 80%;
+  top: 10%;
+  display: flex;
+  z-index: 100;
+  border-bottom-left-radius: 70px;
+  border-top-left-radius: 70px;
+  right: 2px;
+  min-width: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+ul.right-handle {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-name {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+.bottom-slider {
+  border: 1px solid #2c2c2c;
+  background: #161b22;
+  border-radius: 22px;
+  width: 80%;
+  margin-top: 20px;
+  z-index: 100;
+  padding: 5px 0px;
+}
+.bottom-slider .list-name {
+  margin: 0px 10px;
+}
+
+ul.bottom-handle {
+  display: flex;
+}
+
+ul.bottom-handle {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,16 @@
+.period-btn {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #3939ff;
+  margin: 8px 0px;
+  display: flex;
+  box-shadow: 0px 0px 5px #475860;
+  cursor: pointer;
+  font-size: 13px;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-slider .period-btn {
+  margin: 0px 5px;
+}
