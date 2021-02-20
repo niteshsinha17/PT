@@ -7,11 +7,10 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-
-from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
-from .serializers import AccountSerializer
+from account.models import Profile, Progress
+from .serializers import AccountSerializer, ProfileSerializer, ProgressSerializer
 
 
 class ApiLoginView(ObtainAuthToken):
@@ -30,9 +29,6 @@ class ApiLoginView(ObtainAuthToken):
 
 class ObtainAccount(viewsets.ViewSet):
     authentication_classes = [authentication.TokenAuthentication]
-
-    def list(self, request):
-        pass
 
     def create(self, request):
         serializer = AccountSerializer(data=request.data,
@@ -55,10 +51,31 @@ class ObtainAccount(viewsets.ViewSet):
         response.update({"token": token.key})
         return Response(response)
 
-    def update(self, request, pk=None):
-        pass
+    def profile(self, request):
+        try:
+            auth = request.META.get('HTTP_AUTHORIZATION')
+            _, token = auth.split()
+            user = Token.objects.get(key=token).user
+            profile = Profile.objects.get(user=user)
+            serializer = ProfileSerializer(profile)
+            response = {'Profile': serializer.data}
+            return Response(response)
+        except:
+            response = {'Profile': 'Login Required'}
+            return Response(response)
 
-    def partial_update(self, request, pk=None):
+    def progress(self, request):
+        try:
+            auth = request.META.get('HTTP_AUTHORIZATION')
+            _, token = auth.split()
+            user = Token.objects.get(key=token).user
+            progress = Progress.objects.get(user=user)
+            serializer = ProgressSerializer(progress)
+            response = {'Progress': serializer.data}
+            return Response(response)
+        except:
+            response = {'Progress': 'Login Required'}
+            return Response(response)
         pass
 
     def destroy(self, request, pk=None):
@@ -67,3 +84,5 @@ class ObtainAccount(viewsets.ViewSet):
 
 get_account = ObtainAccount.as_view({'get': 'retrieve'})
 register = ObtainAccount.as_view({'get': 'create'})
+profile = ObtainAccount.as_view({'get': 'profile'})
+progress = ObtainAccount.as_view({'get': 'progress'})

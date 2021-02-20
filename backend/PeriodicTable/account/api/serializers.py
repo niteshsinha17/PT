@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework.serializers import ModelSerializer
 from account.models import ChapterScore
+from account.models import Profile, Progress
 
 
 class AccountSerializer(ModelSerializer):
@@ -23,4 +24,20 @@ class ChapterScoreSerializer(ModelSerializer):
 
     class Meta:
         model = ChapterScore
-        fields = ['attempted', 'cleared', 'scored_max', 'maximum_marks']
+        fields = ['chapter', 'attempted', 'cleared',
+                  'scored_max', 'maximum_marks']
+
+
+class ProfileSerializer(ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['f_name', 'l_name', 'dob', 'gender', 'email', 'phone_number']
+
+
+class ProgressSerializer(ModelSerializer):
+    chapter_score = ChapterScoreSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ['topic_completed', 'current_topic', 'current_chapter',
+                  'enrolled_date', 'chapter_score']

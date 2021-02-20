@@ -1,12 +1,12 @@
 from rest_framework.serializers import ModelSerializer
 from Course.models import Chapter, Topic, DoYouKnow
-from account.models import Profile
+from account.models import Progress
 
 
 class TopicSerializer(ModelSerializer):
     class Meta:
         model = Topic
-        fields = ['name', 'number', 'slug', 'id', 'read_time']
+        fields = ['name', 'number', 'slug', 'number']
 
 
 class ChapterSerializer(ModelSerializer):
@@ -15,7 +15,7 @@ class ChapterSerializer(ModelSerializer):
 
     class Meta:
         model = Chapter
-        fields = ['name', 'id', 'slug', 'topics']
+        fields = ['name', 'number', 'slug', 'topics']
 
 
 class ChaptersSerializer(ModelSerializer):
@@ -26,19 +26,19 @@ class ChaptersSerializer(ModelSerializer):
         fields = ['slug', 'name']
 
 
-class ProfileTopicSerializer(ModelSerializer):
+class ProgressTopicSerializer(ModelSerializer):
     current_topic = TopicSerializer(read_only=True)
 
     class Meta:
-        model = Profile
+        model = Progress
         fields = ['current_topic']
 
 
-class ProfileCourseSerializer(ModelSerializer):
+class ProgressCourseSerializer(ModelSerializer):
     current_chapter = ChaptersSerializer(read_only=True)
 
     class Meta:
-        model = Profile
+        model = Progress
         fields = ['current_chapter']
 
 
