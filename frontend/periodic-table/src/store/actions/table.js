@@ -66,6 +66,19 @@ export const showElementSuccess = (data) => {
   };
 };
 
+export const select = (payload) => {
+  return {
+    type: actionTypes.CHANGE_SELECTED,
+    selectedType: payload.type,
+    selected: payload.select,
+  };
+};
+
+export const clearSelected = () => {
+  return {
+    type: actionTypes.CLEAR_SELECTED,
+  };
+};
 export const removeElement = () => {
   return {
     type: actionTypes.HIDE_ELEMENT,

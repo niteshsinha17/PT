@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import SliderButton from "../Button/SliderButton";
 import BlockButton from "../Button/BlockButton";
 import "./Slider.css";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
 
 class LeftSlider extends Component {
   state = {
@@ -28,12 +30,21 @@ class LeftSlider extends Component {
         key: "f-block",
       },
     ],
+    type: "block",
   };
   render() {
     const blockButtons = this.state.blocks.map((block) => {
       return (
         <li key={block.key}>
-          <BlockButton name={block.name} color={block.color} />
+          <BlockButton
+            active={
+              this.state.type === this.props.selectionType &&
+              block.name === this.props.selected
+            }
+            click={() => this.props.select(this.state.type, block.name)}
+            name={block.name}
+            color={block.color}
+          />
         </li>
       );
     });
@@ -53,4 +64,17 @@ class LeftSlider extends Component {
   }
 }
 
-export default LeftSlider;
+const mapStateToProps = (state) => {
+  return {
+    selected: state.table.selected,
+    selectionType: state.table.selectedType,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    select: (type, select) =>
+      dispatch(actions.select({ type: type, select: select })),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeftSlider);

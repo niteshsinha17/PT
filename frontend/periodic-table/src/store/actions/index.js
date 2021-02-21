@@ -6,4 +6,10 @@ export {
   closeAll,
 } from "./auth";
 
-export { tableLoad, showElement, removeElement } from "./table";
+export {
+  tableLoad,
+  showElement,
+  removeElement,
+  select,
+  clearSelected,
+} from "./table";

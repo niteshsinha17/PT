@@ -10,6 +10,9 @@ const initialState = {
   element: null,
   error: false,
   errMsg: null,
+  selected:null,
+  selectionType: null
+
 };
 
 const updateObject = (state, updatedProperties) => {
@@ -55,6 +58,16 @@ const tableReducer = (state = initialState, action) => {
         errMsg: action.err_msg,
         selectedElement: true,
       });
+    case actionTypes.CLEAR_SELECTED:
+      return updateObject(state,{
+        selected:null,
+        selectionType:null
+      })
+    case actionTypes.CHANGE_SELECTED:
+      return updateObject(state,{
+        selected:action.selected,
+        selectionType:action.selectionType
+      })
     default:
       return state;
   }

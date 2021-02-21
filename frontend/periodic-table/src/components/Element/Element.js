@@ -1,49 +1,47 @@
 import React, { useContext } from "react";
 import { connect } from "react-redux";
-
 import "./Element.css";
-import ControlContext from "../../context/control";
 import Lock from "../UI/Lock/Lock";
 import * as actions from ".././../store/actions/index";
 
 const Element = (props) => {
-  const controlContext = useContext(ControlContext);
+
   let classes = ["element"];
-  if (controlContext.selected === null) {
-  } else if (controlContext.selected === "period") {
-    if (controlContext.selected_no !== props.el.period) {
+  if (props.selected === null) {
+  } else if (props.selectionType === "period") {
+    if (props.selected !== props.el.period) {
       classes.push("disable");
     }
-  } else if (controlContext.selected === "group") {
-    if (controlContext.selected_no !== props.group) {
+  } else if (props.selectionType === "group") {
+    if (props.selected !== props.group) {
       classes.push("disable");
     }
   } else if (
-    controlContext.selected === "s" ||
-    controlContext.selected === "p" ||
-    controlContext.selected === "d" ||
-    controlContext.selected === "f"
+    props.selected === "s" ||
+    props.selected === "p" ||
+    props.selected === "d" ||
+    props.selected === "f"
   ) {
-    if (controlContext.selected !== props.block) {
+    if (props.selected !== props.block) {
       classes.push("disable");
     }
-  } else if (controlContext.selected === "Actanide") {
+  } else if (props.selected === "Actanide") {
     if (props.series !== "act") {
       classes.push("disable");
     }
-  } else if (controlContext.selected === "Lanthanide") {
+  } else if (props.selected === "Lanthanide") {
     if (props.series !== "lan") {
       classes.push("disable");
     }
-  } else if (controlContext.selected === "metal") {
+  } else if (props.selected === "metal") {
     if (!props.el.metal) {
       classes.push("disable");
     }
-  } else if (controlContext.selected === "non-metal") {
+  } else if (props.selected === "non-metal") {
     if (!props.el.non_metal) {
       classes.push("disable");
     }
-  } else if (controlContext.selected === "metalloid") {
+  } else if (props.selected === "metalloid") {
     if (!props.el.metalloid) {
       classes.push("disable");
     }
@@ -72,6 +70,8 @@ const mapStateToProps = (state) => {
   return {
     authenticated: state.auth.isAuthenticated,
     selectedElement: state.table.selectedElement,
+    selected:state.table.selected,
+    selectionType:state.table.selectionType
   };
 };
 
