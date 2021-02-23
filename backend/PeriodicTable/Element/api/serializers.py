@@ -5,6 +5,7 @@ from Element.models import Element, Block, Group
 class ElementSerializer(ModelSerializer):
     group = SerializerMethodField('is_group')
     period = SerializerMethodField('is_period')
+    block = SerializerMethodField('is_block')
 
     def is_group(self, Element):
         group = Element.group
@@ -13,6 +14,10 @@ class ElementSerializer(ModelSerializer):
     def is_period(self, Element):
         period = Element.period
         return period.name
+
+    def is_block(self, Element):
+        block = Element.block
+        return block.name
 
     class Meta:
         model = Element
