@@ -22,18 +22,14 @@ const Element = (props) => {
     props.selected === "d" ||
     props.selected === "f"
   ) {
-    if (props.selected !== props.block) {
+    if (props.selected !== props.el.block) {
       classes.push("disable");
     }
-  } else if (props.selected === "Actanide") {
-    if (props.series !== "act") {
+  } else if (props.selectionType === "series") {
+    if (props.series !== props.selected) {
       classes.push("disable");
     }
-  } else if (props.selected === "Lanthanide") {
-    if (props.series !== "lan") {
-      classes.push("disable");
-    }
-  } else if (props.selected === "metal") {
+  }  else if (props.selected === "metal") {
     if (!props.el.metal) {
       classes.push("disable");
     }

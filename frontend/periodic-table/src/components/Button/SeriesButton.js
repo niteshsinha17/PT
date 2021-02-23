@@ -1,8 +1,12 @@
 import React from "react";
 import "./SeriesButton.css";
 const seriesButton = (props) => {
+  let classes = ["series-btn"];
+  if (props.active) {
+    classes.push("series-active");
+  }
   return (
-    <div className="series-btn">
+    <div onClick={props.click} className={classes.join(" ")}>
       {props.name}
     </div>
   );

@@ -23,3 +23,7 @@
   border: 1px solid #464646;
   border-radius: 5px;
 }
+
+.series-active {
+  opacity: 0.5;
+}

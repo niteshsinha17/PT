@@ -67,7 +67,7 @@ class LeftSlider extends Component {
 const mapStateToProps = (state) => {
   return {
     selected: state.table.selected,
-    selectionType: state.table.selectedType,
+    selectionType: state.table.selectionType,
   };
 };
 const mapDispatchToProps = (dispatch) => {

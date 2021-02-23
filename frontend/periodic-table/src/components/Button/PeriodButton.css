@@ -14,3 +14,7 @@
 .bottom-slider .period-btn {
   margin: 0px 5px;
 }
+
+.period-active {
+  opacity: 0.5;
+}

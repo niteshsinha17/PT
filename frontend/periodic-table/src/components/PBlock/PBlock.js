@@ -14,7 +14,6 @@ const pBlock = (props) => {
               <Element
                 type={element._type}
                 group={element.group}
-                block="p"
                 key={element.id}
                 el={element}
               />

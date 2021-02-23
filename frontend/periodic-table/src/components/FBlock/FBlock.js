@@ -15,7 +15,6 @@ const fBlock = (props) => {
               <Element
                 series={series[i]}
                 group={element.group}
-                block="f"
                 key={element.id}
                 el={element}
               />

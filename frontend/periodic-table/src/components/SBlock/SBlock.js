@@ -10,7 +10,7 @@ const sBlock = (props) => {
       return (
             <div key={"sg-" + i} className="group">
               {group.elements.map((element) => {
-                return <Element group={element.group} block="s" key={element.id} el={element} />;
+                return <Element group={element.group} key={element.id} el={element} />;
               })}
             </div>
           );

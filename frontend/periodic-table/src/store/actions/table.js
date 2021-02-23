@@ -69,7 +69,7 @@ export const showElementSuccess = (data) => {
 export const select = (payload) => {
   return {
     type: actionTypes.CHANGE_SELECTED,
-    selectedType: payload.type,
+    selectionType: payload.type,
     selected: payload.select,
   };
 };
