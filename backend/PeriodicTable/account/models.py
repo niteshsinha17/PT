@@ -34,7 +34,8 @@ class Profile(models.Model):
         regex=r'^[6-9]{1}[0-9]{9}$', message="Phone number should in the format: '999999999'. Exactly 10 digits allowed. First digit can be 6,7,8,9")
     phone_number = models.CharField(
         validators=[phone_regex], max_length=10, blank=True)
-    gender = models.CharField(max_length=30, choices=GENDER)
+    gender = models.CharField(
+        max_length=30, choices=GENDER, blank=True, null=True)
     profile_image = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
@@ -42,7 +43,8 @@ class Profile(models.Model):
 
 
 class ChapterScore(models.Model):
-    progress_user = models.ForeignKey(Progress, on_delete=models.CASCADE)
+    progress_user = models.ForeignKey(
+        Progress, on_delete=models.CASCADE, blank=True, null=True)
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
     attempted = models.IntegerField(default=0)
     cleared = models.BooleanField(default=False)
