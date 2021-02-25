@@ -9,8 +9,8 @@ from rest_framework import viewsets
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.models import Token
 
-from account.models import Profile, Progress
-from .serializers import AccountSerializer, ProfileSerializer, ProgressSerializer
+from account.models import Profile, Progress, ChapterScore
+from .serializers import AccountSerializer, ProfileSerializer, ProgressSerializer, ChapterScoreSerializer
 
 
 class ApiLoginView(ObtainAuthToken):
@@ -69,8 +69,9 @@ class ObtainAccount(viewsets.ViewSet):
             auth = request.META.get('HTTP_AUTHORIZATION')
             _, token = auth.split()
             user = Token.objects.get(key=token).user
-            progress = Progress.objects.get(user=user)
-            serializer = ProgressSerializer(progress)
+            profile_user = Profile.objects.get(user=user)
+            queryset = ChapterScore.objects.filter(profile_user=profile_user)
+            serializer = ChapterScoreSerializer(queryset, many=True)
             response = {'Progress': serializer.data}
             return Response(response)
         except:

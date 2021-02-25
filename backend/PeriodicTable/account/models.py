@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from Course.models import Chapter, Topic
+from game.models import Quiz
 from django.core.validators import RegexValidator
 
 # Create your models here.
@@ -45,7 +46,12 @@ class Profile(models.Model):
 class ChapterScore(models.Model):
     progress_user = models.ForeignKey(
         Progress, on_delete=models.CASCADE, blank=True, null=True)
-    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
+    profile_user = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, blank=True, null=True)
+    quiz = models.ForeignKey(
+        Quiz, on_delete=models.CASCADE, blank=True, null=True)
+    chapter = models.ForeignKey(
+        Chapter, on_delete=models.CASCADE, blank=True, null=True)
     attempted = models.IntegerField(default=0)
     cleared = models.BooleanField(default=False)
     maximum_marks = models.IntegerField(default=0)
