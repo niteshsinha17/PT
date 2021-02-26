@@ -51,6 +51,15 @@ class Group(models.Model):
         return 'Group {}'.format(str(self.name))
 
 
+class Mnemonics(models.Model):
+    group = models.ForeignKey(
+        Group, null=True, blank=True, on_delete=models.CASCADE, related_name='mnemonics')
+    period = models.ForeignKey(
+        Period, null=True, blank=True, on_delete=models.CASCADE, related_name='mnemonics')
+    mnemonics_hindi = models.CharField(max_length=500, null=True, blank=True)
+    mnemonics_english = models.CharField(max_length=500, null=True, blank=True)
+
+
 class Element(models.Model):
     PHASE_CATEGORIES = (
         ('Solid', 'Solid'),

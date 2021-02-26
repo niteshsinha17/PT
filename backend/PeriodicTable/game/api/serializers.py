@@ -1,5 +1,11 @@
 from rest_framework.serializers import ModelSerializer
-from game.models import Question, Option, Answer
+from game.models import Question, Option, Answer, Quiz
+
+
+class QuizSerializer(ModelSerializer):
+    class Meta:
+        model = Quiz
+        fields = ['name']
 
 
 class OptionSerializer(ModelSerializer):
