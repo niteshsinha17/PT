@@ -1,0 +1,35 @@
+.games {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game {
+  width: 70%;
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 4px;
+  margin: 10px auto;
+  color: rgb(20, 20, 20);
+  font-weight: 700;
+}
+
+.game-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 4%;
+  align-items: center;
+}
+
+.game button {
+  padding: 5px 20px;
+  background-color: #7cb342;
+  border: 2px solid #388e3c;
+  color: #1b5e20;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  cursor: pointer;
+}
+.game img {
+  width: 100%;
+  filter: brightness(0.7);
+}

@@ -34,7 +34,7 @@ class Header extends Component {
             animate={{ opacity: 1, x: 0 }}
           >
             <NavLink
-              to="/game/"
+              to="/games/"
               exact
               activeClassName="active-link"
               className="nav-link"

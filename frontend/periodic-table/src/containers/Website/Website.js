@@ -1,12 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
+import {connect} from "react-redux";
+import {motion, AnimatePresence} from "framer-motion";
 
 import Header from "../Header/Header";
 import Overview from "../Overview/Overview";
 import Course from "../Course/Course";
 import StudyMaterial from "../StudyMaterial/StudyMaterial";
-import { Route, Redirect } from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 import * as actions from "../../store/actions/index";
 import Board from "../../components/Board/Board";
 import LoginForm from "../Forms/LoginForm";
@@ -15,14 +15,16 @@ import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Loader from "../../components/UI/Loader/Loader";
 import LeftSlider from "../../components/Sliders/LeftSlider";
 import RightSlider from "../../components/Sliders/RightSlider";
-import BottomSlide from "../../components/Sliders/BottomSlide";
+import LoginPlease from "../../components/LoginPlease/LoginPlease";
+// import BottomSlide from "../../components/Sliders/BottomSlide";
+import Games from "../Games/Games";
 class Website extends React.Component {
   state = {
     loading: true,
   };
 
   hideLoader = () => {
-    this.setState({ loading: false });
+    this.setState({loading: false});
   };
   componentDidMount() {
     this.props.login();
@@ -32,9 +34,9 @@ class Website extends React.Component {
   }
   render() {
     const formVarient = {
-      visible: { opacity: 1, y: 0 },
-      hidden: { opacity: 0, y: -500 },
-      exit: { opacity: 0, y: -500 },
+      visible: {opacity: 1, y: 0},
+      hidden: {opacity: 0, y: -500},
+      exit: {opacity: 0, y: -500},
     };
     return (
       <div>
@@ -60,6 +62,17 @@ class Website extends React.Component {
           exact
           render={() => {
             return <LeftSlider />;
+          }}
+        />
+        <Route
+          path="/games"
+          exact
+          render={() => {
+            if (this.props.authenticated) {
+              return <Games />;
+            } else {
+              return <LoginPlease />;
+            }
           }}
         />
 

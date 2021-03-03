@@ -30,8 +30,8 @@ const evolution = (props) => {
       topic = <Facts />;
       break;
     case "game":
-      topic = <BasketGame />;
-      // topic = <Quize />;
+      // topic = <BasketGame />;
+      topic = <Quize />;
       break;
     default:
       break;

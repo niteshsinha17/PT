@@ -77,7 +77,7 @@ export const auth = (username, password) => {
     const url = "http://127.0.0.1:8000/api/account/login/";
     const options = {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
       data: qs.stringify(authData),
       url,
     };
@@ -102,7 +102,7 @@ export const register = (username, password) => {
     const url = "http://127.0.0.1:8000/api/account/register/";
     const options = {
       method: "GET",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
       data: qs.stringify(authData),
       url,
     };
